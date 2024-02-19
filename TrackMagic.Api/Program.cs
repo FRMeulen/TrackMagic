@@ -2,6 +2,7 @@ using TrackMagic.Api.Configurations;
 using TrackMagic.Application;
 using TrackMagic.Application.Common.Persistence;
 using TrackMagic.Infrastructure;
+using TrackMagic.Infrastructure.Persistence;
 using TrackMagic.Infrastructure.Persistence.Context;
 
 namespace TrackMagic.Api
@@ -18,19 +19,7 @@ namespace TrackMagic.Api
 
                 var app = builder.Build();
 
-                // Configure the HTTP request pipeline.
-                if (app.Environment.IsDevelopment())
-                {
-                    app.UseSwagger();
-                    app.UseSwaggerUI();
-                }
-
-                app.UseHttpsRedirection();
-
-                app.UseAuthorization();
-
-
-                app.MapControllers();
+                UseServices(app);
 
                 await app.RunAsync();
             }
@@ -52,6 +41,21 @@ namespace TrackMagic.Api
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+        }
+
+        private static async void UseServices(WebApplication app)
+        {
+            await app.Services.InitializeDatabaseAsync();
+
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
+
+            app.UseHttpsRedirection();
+            app.UseAuthorization();
+            app.MapControllers();
         }
     }
 }
