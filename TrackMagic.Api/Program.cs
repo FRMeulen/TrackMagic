@@ -1,5 +1,8 @@
 using TrackMagic.Api.Configurations;
+using TrackMagic.Application;
+using TrackMagic.Application.Common.Persistence;
 using TrackMagic.Infrastructure;
+using TrackMagic.Infrastructure.Persistence.Context;
 
 namespace TrackMagic.Api
 {
@@ -45,6 +48,7 @@ namespace TrackMagic.Api
         {
             builder.AddConfigurations();
             builder.Services.AddInfrastructure(builder.Configuration);
+            builder.Services.AddApplication(builder.Configuration, typeof(AppDbContext).Assembly, typeof(IAppDbContext).Assembly);
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
