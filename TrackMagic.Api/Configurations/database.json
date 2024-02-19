@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "App": "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=TrackMagic;Integrated Security=True;MultipleActiveResultSets=true"
+  }
+}

@@ -1,5 +1,5 @@
-
-using System;
+using TrackMagic.Api.Configurations;
+using TrackMagic.Application.Dtos;
 
 namespace TrackMagic.Api
 {
@@ -11,12 +11,7 @@ namespace TrackMagic.Api
             {
                 var builder = WebApplication.CreateBuilder(args);
 
-                // Add services to the container.
-
-                builder.Services.AddControllers();
-                // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-                builder.Services.AddEndpointsApiExplorer();
-                builder.Services.AddSwaggerGen();
+                AddServices(builder);
 
                 var app = builder.Build();
 
@@ -44,6 +39,14 @@ namespace TrackMagic.Api
             {
                 // Log Shutdown.
             }
+        }
+
+        private static void AddServices(WebApplicationBuilder builder)
+        {
+            builder.AddConfigurations();
+            builder.Services.AddControllers();
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
         }
     }
 }
