@@ -2,7 +2,7 @@
 
 namespace TrackMagic.Infrastructure.Persistence.Context
 {
-    public class DbContextBase : DbContext
+    public abstract class DbContextBase : DbContext
     {
         public DbContextBase(DbContextOptions options) : base(options) { }
 
