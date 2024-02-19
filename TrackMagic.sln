@@ -3,19 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackMagic.Api", "TrackMagic.Api\TrackMagic.Api.csproj", "{B3E6C7FF-491D-4489-830C-935FA3D8810B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackMagic.Api", "TrackMagic.Api\TrackMagic.Api.csproj", "{B3E6C7FF-491D-4489-830C-935FA3D8810B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackMagic.Application", "TrackMagic.Application\TrackMagic.Application.csproj", "{318166B0-8204-4BD3-9D82-43FF4A6BD3ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackMagic.Application", "TrackMagic.Application\TrackMagic.Application.csproj", "{318166B0-8204-4BD3-9D82-43FF4A6BD3ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackMagic.Domain", "TrackMagic.Domain\TrackMagic.Domain.csproj", "{4FFA757E-7B6E-4CCF-8D46-DC3541D5FA14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackMagic.Domain", "TrackMagic.Domain\TrackMagic.Domain.csproj", "{4FFA757E-7B6E-4CCF-8D46-DC3541D5FA14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackMagic.Infrastructure", "TrackMagic.Infrastructure\TrackMagic.Infrastructure.csproj", "{8E7CA9F5-DCC4-413F-82B1-66B80B25A80D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackMagic.Infrastructure", "TrackMagic.Infrastructure\TrackMagic.Infrastructure.csproj", "{8E7CA9F5-DCC4-413F-82B1-66B80B25A80D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{4E3DF613-FC7E-4D4E-9EE6-BD5BE9F12DEF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{396EB6F5-3D5C-457B-947F-035C73C3E900}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackMagic.Api.IntegrationTests", "TrackMagic.Api.IntegrationTests\TrackMagic.Api.IntegrationTests.csproj", "{BA071A50-71BA-441B-8F99-7C6AEE9FC44D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackMagic.Api.IntegrationTests", "TrackMagic.Api.IntegrationTests\TrackMagic.Api.IntegrationTests.csproj", "{BA071A50-71BA-441B-8F99-7C6AEE9FC44D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackMagic.Shared", "TrackMagic.Shared\TrackMagic.Shared.csproj", "{43D4AA7B-FE1E-4578-A969-FB0701C0018C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{BA071A50-71BA-441B-8F99-7C6AEE9FC44D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA071A50-71BA-441B-8F99-7C6AEE9FC44D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA071A50-71BA-441B-8F99-7C6AEE9FC44D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43D4AA7B-FE1E-4578-A969-FB0701C0018C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43D4AA7B-FE1E-4578-A969-FB0701C0018C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43D4AA7B-FE1E-4578-A969-FB0701C0018C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43D4AA7B-FE1E-4578-A969-FB0701C0018C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{4FFA757E-7B6E-4CCF-8D46-DC3541D5FA14} = {4E3DF613-FC7E-4D4E-9EE6-BD5BE9F12DEF}
 		{8E7CA9F5-DCC4-413F-82B1-66B80B25A80D} = {4E3DF613-FC7E-4D4E-9EE6-BD5BE9F12DEF}
 		{BA071A50-71BA-441B-8F99-7C6AEE9FC44D} = {396EB6F5-3D5C-457B-947F-035C73C3E900}
+		{43D4AA7B-FE1E-4578-A969-FB0701C0018C} = {4E3DF613-FC7E-4D4E-9EE6-BD5BE9F12DEF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F854D264-0019-4E8A-9CDB-25CA6DF78CC6}
