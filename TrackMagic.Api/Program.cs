@@ -1,5 +1,5 @@
 using TrackMagic.Api.Configurations;
-using TrackMagic.Application.Dtos;
+using TrackMagic.Infrastructure;
 
 namespace TrackMagic.Api
 {
@@ -44,6 +44,7 @@ namespace TrackMagic.Api
         private static void AddServices(WebApplicationBuilder builder)
         {
             builder.AddConfigurations();
+            builder.Services.AddInfrastructure(builder.Configuration);
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

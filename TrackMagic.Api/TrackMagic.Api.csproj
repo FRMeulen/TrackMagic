@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TrackMagic.Application\TrackMagic.Application.csproj" />
+    <ProjectReference Include="..\TrackMagic.Infrastructure\TrackMagic.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
