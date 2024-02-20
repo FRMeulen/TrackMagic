@@ -1,0 +1,8 @@
+{
+  "SwaggerSettings": {
+    "Enabled": true,
+    "Version": "v1",
+    "Title": "TrackMagic",
+    "Description": "Asp.Net Core Web Api to track Magic games with my friends."
+  }
+}

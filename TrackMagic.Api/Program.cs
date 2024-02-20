@@ -20,7 +20,7 @@ namespace TrackMagic.Api
 
                 var app = builder.Build();
 
-                UseServices(app);
+                UseServices(app, builder.Configuration);
 
                 await app.RunAsync();
             }
@@ -40,28 +40,11 @@ namespace TrackMagic.Api
             builder.Services.AddInfrastructure(builder.Configuration);
             builder.Services.AddApplication(builder.Configuration, typeof(AppDbContext).Assembly, typeof(IAppDbContext).Assembly);
             builder.Services.AddControllers();
-            builder.Services.AddOpenApiDocument(options =>
-            {
-                options.PostProcess = document =>
-                {
-                    document.Info = new OpenApiInfo
-                    {
-                        Version = "v1",
-                        Title = "TrackMagic",
-                        Description = "An ASP.NET Core Web API for tracking Magic games with my friends.",
-                    };
-                };
-            });
         }
 
-        private static async void UseServices(WebApplication app)
+        private static async void UseServices(WebApplication app, IConfiguration config)
         {
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseOpenApi();
-                app.UseSwaggerUi();
-            }
-
+            app.UseInfrastructure(config);
             await app.Services.InitializeDatabaseAsync();
             app.UseHttpsRedirection();
             app.UseAuthorization();
