@@ -1,5 +1,4 @@
-using Microsoft.OpenApi.Models;
-using System.Reflection;
+using NSwag;
 using TrackMagic.Api.Configurations;
 using TrackMagic.Application;
 using TrackMagic.Application.Common.Persistence;
@@ -41,13 +40,17 @@ namespace TrackMagic.Api
             builder.Services.AddInfrastructure(builder.Configuration);
             builder.Services.AddApplication(builder.Configuration, typeof(AppDbContext).Assembly, typeof(IAppDbContext).Assembly);
             builder.Services.AddControllers();
-            builder.Services.AddSwaggerGen(options =>
+            builder.Services.AddOpenApiDocument(options =>
             {
-                options.SwaggerDoc("v1", new OpenApiInfo
+                options.PostProcess = document =>
                 {
-                    Title = "TrackMagic",
-                    Description = "An ASP.NET Core Web API for tracking Magic games with my friends."
-                });
+                    document.Info = new OpenApiInfo
+                    {
+                        Version = "v1",
+                        Title = "TrackMagic",
+                        Description = "An ASP.NET Core Web API for tracking Magic games with my friends.",
+                    };
+                };
             });
         }
 
@@ -57,8 +60,8 @@ namespace TrackMagic.Api
 
             if (app.Environment.IsDevelopment())
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseOpenApi();
+                app.UseSwaggerUi();
             }
 
             app.UseHttpsRedirection();
