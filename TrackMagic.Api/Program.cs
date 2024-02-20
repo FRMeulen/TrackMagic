@@ -56,14 +56,13 @@ namespace TrackMagic.Api
 
         private static async void UseServices(WebApplication app)
         {
-            await app.Services.InitializeDatabaseAsync();
-
             if (app.Environment.IsDevelopment())
             {
                 app.UseOpenApi();
                 app.UseSwaggerUi();
             }
 
+            await app.Services.InitializeDatabaseAsync();
             app.UseHttpsRedirection();
             app.UseAuthorization();
             app.MapControllers();

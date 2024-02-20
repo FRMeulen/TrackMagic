@@ -11,13 +11,13 @@ namespace TrackMagic.Infrastructure.Persistence.Initialization
 
         public async Task InitializeAsync(CancellationToken cancellationToken)
         {
-            //if (_dbContext.Database.GetMigrations().Any())
-            //{
-            //    if ((await _dbContext.Database.GetPendingMigrationsAsync(cancellationToken)).Any())
-            //    {
-            //        await _dbContext.Database.MigrateAsync(cancellationToken);
-            //    }
-            //}
+            if (_dbContext.Database.GetMigrations().Any())
+            {
+                if ((await _dbContext.Database.GetPendingMigrationsAsync(cancellationToken)).Any())
+                {
+                    await _dbContext.Database.MigrateAsync(cancellationToken);
+                }
+            }
         }
     }
 }
