@@ -10,8 +10,8 @@ namespace TrackMagic.Application
         {
             // Add services.
 
-            return services;
-                //.AddMediatr(o => o.RegisterServicesFromAssemblies(mediatrAssemblies);
+            return services
+                .AddMediatR(o => o.RegisterServicesFromAssemblies(mediatrAssemblies));
         }
     }
 }

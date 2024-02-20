@@ -1,4 +1,3 @@
-using NSwag;
 using TrackMagic.Api.Configurations;
 using TrackMagic.Application;
 using TrackMagic.Application.Common.Persistence;
@@ -37,6 +36,7 @@ namespace TrackMagic.Api
         private static void AddServices(WebApplicationBuilder builder)
         {
             builder.AddConfigurations();
+            builder.Services.AddAutoMapper(typeof(Program));
             builder.Services.AddInfrastructure(builder.Configuration);
             builder.Services.AddApplication(builder.Configuration, typeof(AppDbContext).Assembly, typeof(IAppDbContext).Assembly);
             builder.Services.AddControllers();
