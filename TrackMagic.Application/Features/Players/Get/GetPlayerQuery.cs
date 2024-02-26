@@ -1,18 +1,18 @@
 ﻿using AutoMapper;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 using TrackMagic.Application.Common.Persistence;
+using TrackMagic.Application.Common.Requests;
 using TrackMagic.Application.Dtos;
 using TrackMagic.Domain.Entities;
 
 namespace TrackMagic.Application.Features.Players.Get
 {
-    public class GetPlayerQuery : IRequest<PlayerDto>
+    public class GetPlayerQuery : IQuery<PlayerDto>
     {
         public int Id { get; set; }
     }
 
-    public class GetPlayerQueryHandler : IRequestHandler<GetPlayerQuery, PlayerDto>
+    public class GetPlayerQueryHandler : IQueryHandler<GetPlayerQuery, PlayerDto>
     {
         private readonly IAppDbContext _dbContext;
         private readonly IMapper _mapper;

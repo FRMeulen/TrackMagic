@@ -14,13 +14,15 @@ AspNetCore Web Api to track magic games with friends.
     - Contracts
     - Entities
 * Infrastructure
+    - OpenApi
     - Persistence
 * Shared
     - Constants
-    - Enums
+    - Exceptions
 
 ## ToDo Checklist
 * FluentValidation
+* Validation in MediatR pipeline
 * Result pattern
 * Unit tests
 * Integration tests

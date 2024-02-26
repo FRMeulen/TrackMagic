@@ -1,6 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using FluentValidation;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using TrackMagic.Application.Common.Persistence;
 
 namespace TrackMagic.Application
 {
@@ -11,7 +13,8 @@ namespace TrackMagic.Application
             // Add services.
 
             return services
-                .AddMediatR(o => o.RegisterServicesFromAssemblies(mediatrAssemblies));
+                .AddValidatorsFromAssembly(typeof(IAppDbContext).Assembly)
+                .AddMediatR(o => o.RegisterServicesFromAssembly(typeof(IAppDbContext).Assembly));
         }
     }
 }
