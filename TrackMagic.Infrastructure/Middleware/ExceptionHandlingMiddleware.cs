@@ -26,7 +26,7 @@ namespace TrackMagic.Infrastructure.Middleware
             }
             catch (RequestException ex)
             {
-                await HandleRequestExceptionAsync(context, ex);
+                await HandleNonValidationExceptionAsync(context, ex);
             }
         }
 
@@ -51,7 +51,7 @@ namespace TrackMagic.Infrastructure.Middleware
             await response.WriteAsJsonAsync(problemDetails);
         }
 
-        private async Task HandleRequestExceptionAsync(HttpContext context, RequestException ex)
+        private async Task HandleNonValidationExceptionAsync(HttpContext context, RequestException ex)
         {
             var errorResult = new ErrorResult
             {
