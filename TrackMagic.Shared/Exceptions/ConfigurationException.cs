@@ -1,7 +1,9 @@
-﻿namespace TrackMagic.Shared.Exceptions
+﻿using TrackMagic.Shared.Exceptions.Base;
+
+namespace TrackMagic.Shared.Exceptions
 {
-    public class ConfigurationException : Exception
+    public class ConfigurationException : ApplicationSetupException
     {
-        public ConfigurationException(string configName) : base($"Config section {configName} was not configured.") { }
+        public ConfigurationException(string configName) : base("Configuration Error", $"Config section {configName} was not configured.") { }
     }
 }
