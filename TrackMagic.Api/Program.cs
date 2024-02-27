@@ -42,11 +42,11 @@ namespace TrackMagic.Api
         private static void AddServices(WebApplicationBuilder builder)
         {
             builder.AddConfigurations();
+            builder.Services.AddLogging(opt => opt.AddConsole());
             builder.Services.AddAutoMapper(typeof(Program));
             builder.Services.AddInfrastructure(builder.Configuration);
             builder.Services.AddApplication(builder.Configuration, typeof(AppDbContext).Assembly, typeof(IAppDbContext).Assembly);
             builder.Services.AddControllers();
-            builder.Services.AddLogging(opt => opt.AddConsole());
         }
 
         private static async void UseServices(WebApplication app, IConfiguration config)
