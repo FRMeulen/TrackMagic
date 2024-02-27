@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using TrackMagic.Shared.Constants;
 using TrackMagic.Shared.Exceptions;
 using TrackMagic.Shared.Exceptions.Base;
@@ -12,9 +11,8 @@ namespace TrackMagic.Infrastructure.Middleware
     public class ExceptionHandlingMiddleware : IMiddleware
     {
         private readonly IHostEnvironment _environment;
-        private readonly ILogger _logger;
 
-        public ExceptionHandlingMiddleware(IHostEnvironment environment, ILogger logger) => (_environment, _logger) = (environment, logger);
+        public ExceptionHandlingMiddleware(IHostEnvironment environment) => _environment = environment;
 
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
@@ -34,7 +32,6 @@ namespace TrackMagic.Infrastructure.Middleware
 
         private async Task HandleValidationExceptionAsync(HttpContext context, ValidationException ex)
         {
-            _logger.LogError(ex, DefaultMessages.ValidationExceptionTitle);
             var errors = ex.Errors.GroupBy(x => x.PropertyName)
                 .ToDictionary(k => k.Key, v => v.Select(x => x.ErrorMessage).ToArray());
 
@@ -56,7 +53,6 @@ namespace TrackMagic.Infrastructure.Middleware
 
         private async Task HandleNonValidationExceptionAsync(HttpContext context, RequestException ex)
         {
-            _logger.LogError(ex, DefaultMessages.NonValidationExceptionTitle);
             var errorResult = new ErrorResult
             {
                 Source = ex.TargetSite?.DeclaringType?.FullName,

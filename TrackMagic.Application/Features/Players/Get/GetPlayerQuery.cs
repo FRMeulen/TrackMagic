@@ -18,15 +18,12 @@ namespace TrackMagic.Application.Features.Players.Get
     {
         private readonly IAppDbContext _dbContext;
         private readonly IMapper _mapper;
-        private readonly ILogger _logger;
 
-        public GetPlayerQueryHandler(IAppDbContext dbContext, IMapper mapper, ILogger logger)
-            => (_dbContext, _mapper, _logger) = (dbContext, mapper, logger);
+        public GetPlayerQueryHandler(IAppDbContext dbContext, IMapper mapper)
+            => (_dbContext, _mapper) = (dbContext, mapper);
 
         public async Task<PlayerDto> Handle(GetPlayerQuery request, CancellationToken cancellationToken)
         {
-            _logger.LogInformation(DefaultMessages.RequestReceivedMessage(nameof(GetPlayerQuery)));
-
             var player = await _dbContext.Set<Player>()
                 .FirstOrDefaultAsync(p => p.Id == request.Id, cancellationToken);
 

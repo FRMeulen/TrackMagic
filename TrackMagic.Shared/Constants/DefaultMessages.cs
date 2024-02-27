@@ -10,5 +10,6 @@
 
         // Request messages.
         public static string RequestReceivedMessage(string requestType) => $"Request of type {requestType} received.";
+        public static string RequestValidatingMessage(string requestType) => $"Request of type {requestType} validating.";
     }
 }
