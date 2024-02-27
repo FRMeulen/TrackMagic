@@ -6,6 +6,7 @@ using TrackMagic.Application.Common.Requests;
 using TrackMagic.Application.Dtos;
 using TrackMagic.Domain.Entities;
 using TrackMagic.Shared.Constants;
+using TrackMagic.Shared.Exceptions;
 
 namespace TrackMagic.Application.Features.Players.Get
 {
@@ -24,6 +25,8 @@ namespace TrackMagic.Application.Features.Players.Get
 
         public async Task<PlayerDto> Handle(GetPlayerQuery request, CancellationToken cancellationToken)
         {
+            throw new ConfigurationException("Configured to fail!");
+
             var player = await _dbContext.Set<Player>()
                 .FirstOrDefaultAsync(p => p.Id == request.Id, cancellationToken);
 

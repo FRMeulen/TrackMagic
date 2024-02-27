@@ -8,8 +8,6 @@
         public static string NonValidationExceptionTitle = "One or more errors occurred";
         public static string SupportMessage = "If this problem persists, please contact me on GitHub.";
 
-        // Request messages.
-        public static string RequestReceivedMessage(string requestType) => $"Request of type {requestType} received.";
-        public static string RequestValidatingMessage(string requestType) => $"Request of type {requestType} validating.";
+        public static string LoggingPipelineMessage(string requestType) => $"Request of type {requestType} passed through validation.";
     }
 }
