@@ -3,7 +3,7 @@
     public static class _Configure
     {
         private static string configDir = "Configurations";
-        private static string[] configFiles = ["database", "openapi"];
+        private static string[] configFiles = ["database", "openapi", "logging"];
 
         public static WebApplicationBuilder AddConfigurations(this WebApplicationBuilder builder)
         {

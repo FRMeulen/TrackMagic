@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TrackMagic.Domain\TrackMagic.Domain.csproj" />
+    <ProjectReference Include="..\TrackMagic.Shared\TrackMagic.Shared.csproj" />
   </ItemGroup>
 
 </Project>

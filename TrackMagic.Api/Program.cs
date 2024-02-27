@@ -9,6 +9,8 @@ namespace TrackMagic.Api
 {
     public class Program
     {
+        private static ILogger _logger = null!;
+
         public async static Task Main(string[] args)
         {
             try
@@ -19,17 +21,21 @@ namespace TrackMagic.Api
 
                 var app = builder.Build();
 
+                _logger = app.Services.GetService<ILogger<Program>>()!;
+
                 UseServices(app, builder.Configuration);
+
+                _logger.LogInformation("Starting application.");
 
                 await app.RunAsync();
             }
             catch (Exception ex) when (!ex.GetType().Name.Equals("StopTheHostException", StringComparison.Ordinal))
             {
-                // Log Exception.
+                _logger.LogError(ex.Message);
             }
             finally
             {
-                // Log Shutdown.
+                _logger.LogInformation("Shutting Down.");
             }
         }
 
@@ -40,6 +46,7 @@ namespace TrackMagic.Api
             builder.Services.AddInfrastructure(builder.Configuration);
             builder.Services.AddApplication(builder.Configuration, typeof(AppDbContext).Assembly, typeof(IAppDbContext).Assembly);
             builder.Services.AddControllers();
+            builder.Services.AddLogging(opt => opt.AddConsole());
         }
 
         private static async void UseServices(WebApplication app, IConfiguration config)
