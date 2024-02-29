@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TrackMagic.Infrastructure.Middleware;
+using TrackMagic.Infrastructure.ExceptionHandling;
 using TrackMagic.Infrastructure.OpenApi;
 using TrackMagic.Infrastructure.Persistence;
 
@@ -11,13 +11,13 @@ namespace TrackMagic.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration config)
             => services
+                .AddExceptionHandlers()
                 .AddOpenApiServices(config)
-                .AddMiddlewareServices()
                 .AddPersistence(config);
 
         public static IApplicationBuilder UseInfrastructure(this IApplicationBuilder builder, IConfiguration config)
             => builder
-                .UseMiddlewareServices()
+                .UseExceptionHandlers()
                 .UseOpenApiServices(config);
     }
 }

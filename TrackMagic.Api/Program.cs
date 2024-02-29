@@ -1,6 +1,5 @@
 using System.Reflection;
 using TrackMagic.Api.Configurations;
-using TrackMagic.Api.Controllers;
 using TrackMagic.Api.Services;
 using TrackMagic.Application;
 using TrackMagic.Application.Common.Persistence;
@@ -16,30 +15,19 @@ namespace TrackMagic.Api
 
         public async static Task Main(string[] args)
         {
-            try
-            {
-                var builder = WebApplication.CreateBuilder(args);
+            var builder = WebApplication.CreateBuilder(args);
 
-                AddServices(builder);
+            AddServices(builder);
 
-                var app = builder.Build();
+            var app = builder.Build();
 
-                _logger = app.Services.GetService<ILogger<Program>>()!;
+            _logger = app.Services.GetService<ILogger<Program>>()!;
 
-                UseServices(app, builder.Configuration);
+            UseServices(app, builder.Configuration);
 
-                _logger.LogInformation("Starting application.");
+            _logger.LogInformation("Starting application.");
 
-                await app.RunAsync(CancellationToken.None);
-            }
-            catch (Exception ex) when (!ex.GetType().Name.Equals("StopTheHostException", StringComparison.Ordinal))
-            {
-                _logger.LogError(ex.Message);
-            }
-            finally
-            {
-                _logger.LogInformation("Shutting Down.");
-            }
+            await app.RunAsync(CancellationToken.None);
         }
 
         private static void AddServices(WebApplicationBuilder builder)
@@ -54,12 +42,15 @@ namespace TrackMagic.Api
 
         private static async void UseServices(WebApplication app, IConfiguration config)
         {
+            app.UseInfrastructure(config);
+            app.UseHsts();
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
             app.UseRouting();
             app.UseEndpoints(endpoints => endpoints.MapControllers());
-            app.UseInfrastructure(config);
-            await app.Services.InitializeDatabaseAsync();
-            app.UseHttpsRedirection();
             app.UseAuthorization();
+            await app.Services.InitializeDatabaseAsync();
+            app.MapControllers();
         }
     }
 }

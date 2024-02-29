@@ -1,7 +1,6 @@
 ﻿using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using TrackMagic.Shared.Constants;
 
 namespace TrackMagic.Application.Behaviors
 {
@@ -19,7 +18,7 @@ namespace TrackMagic.Application.Behaviors
 
         public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
         {
-            _logger.LogInformation(DefaultMessages.LoggingPipelineMessage(request.GetType().Name));
+            _logger.LogInformation($"Request of type {request.GetType().Name} passed through validation.");
             if (!_validators.Any()) return await next();
 
             var context = new ValidationContext<TRequest>(request);

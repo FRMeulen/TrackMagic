@@ -3,7 +3,7 @@ using NSwag.Annotations;
 using TrackMagic.Api.Controllers.Base;
 using TrackMagic.Application.Dtos;
 using TrackMagic.Application.Features.Players.Get;
-using TrackMagic.Infrastructure.Middleware;
+using TrackMagic.Infrastructure.ExceptionHandling;
 
 namespace TrackMagic.Api.Controllers
 {

@@ -1,4 +1,4 @@
-﻿namespace TrackMagic.Infrastructure.Middleware
+﻿namespace TrackMagic.Infrastructure.ExceptionHandling
 {
     public class ErrorResult
     {
