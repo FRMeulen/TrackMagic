@@ -22,6 +22,7 @@ namespace TrackMagic.Infrastructure.Middleware
 
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
+            _logger.LogInformation($"Exception handling middleware invoked for {context.Request.Path}.");
             try
             {
                 await next(context);

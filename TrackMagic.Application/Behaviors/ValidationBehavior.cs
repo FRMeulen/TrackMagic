@@ -11,11 +11,15 @@ namespace TrackMagic.Application.Behaviors
         private readonly IEnumerable<IValidator<TRequest>> _validators;
         private readonly ILogger _logger;
 
-        public ValidationBehavior(IEnumerable<IValidator<TRequest>> validators, ILogger logger) => (_validators, _logger) = (validators, logger);
+        public ValidationBehavior(IEnumerable<IValidator<TRequest>> validators, ILoggerFactory loggerFactory)
+        {
+            _validators = validators;
+            _logger = loggerFactory.CreateLogger<ValidationBehavior<TRequest, TResponse>>();
+        }
 
         public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
         {
-            _logger.LogInformation(DefaultMessages.LoggingPipelineMessage(nameof(request)));
+            _logger.LogInformation(DefaultMessages.LoggingPipelineMessage(request.GetType().Name));
             if (!_validators.Any()) return await next();
 
             var context = new ValidationContext<TRequest>(request);

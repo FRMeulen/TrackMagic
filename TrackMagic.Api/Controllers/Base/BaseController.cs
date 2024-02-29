@@ -5,7 +5,7 @@ namespace TrackMagic.Api.Controllers.Base
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class BaseController : ControllerBase
+    public abstract class BaseController : ControllerBase
     {
         private ISender _mediator = null!;
 

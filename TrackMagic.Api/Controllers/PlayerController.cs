@@ -9,12 +9,12 @@ namespace TrackMagic.Api.Controllers
 {
     public class PlayerController : BaseController
     {
-        [HttpGet("{id:int}")]
+        [HttpGet]
         [OpenApiOperation("Get a Player by id.")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType(typeof(ErrorResult))]
-        public async Task<PlayerDto> GetAsync(int id, CancellationToken cancellationToken)
+        public async Task<PlayerDto> GetAsync([FromQuery] int id, CancellationToken cancellationToken)
         {
             var result = await Mediator.Send(new GetPlayerQuery { Id = id }, cancellationToken);
 

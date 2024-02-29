@@ -1,4 +1,7 @@
+using System.Reflection;
 using TrackMagic.Api.Configurations;
+using TrackMagic.Api.Controllers;
+using TrackMagic.Api.Services;
 using TrackMagic.Application;
 using TrackMagic.Application.Common.Persistence;
 using TrackMagic.Infrastructure;
@@ -27,7 +30,7 @@ namespace TrackMagic.Api
 
                 _logger.LogInformation("Starting application.");
 
-                await app.RunAsync();
+                await app.RunAsync(CancellationToken.None);
             }
             catch (Exception ex) when (!ex.GetType().Name.Equals("StopTheHostException", StringComparison.Ordinal))
             {
@@ -42,20 +45,21 @@ namespace TrackMagic.Api
         private static void AddServices(WebApplicationBuilder builder)
         {
             builder.AddConfigurations();
-            builder.Services.AddLogging(opt => opt.AddConsole());
             builder.Services.AddAutoMapper(typeof(Program));
             builder.Services.AddInfrastructure(builder.Configuration);
             builder.Services.AddApplication(builder.Configuration, typeof(AppDbContext).Assembly, typeof(IAppDbContext).Assembly);
-            builder.Services.AddControllers();
+            builder.Services.AddControllers().AddApplicationPart(Assembly.GetExecutingAssembly());
+            builder.Services.AddHostedService<ApplicationPartsLogger>();
         }
 
         private static async void UseServices(WebApplication app, IConfiguration config)
         {
+            app.UseRouting();
+            app.UseEndpoints(endpoints => endpoints.MapControllers());
             app.UseInfrastructure(config);
             await app.Services.InitializeDatabaseAsync();
             app.UseHttpsRedirection();
             app.UseAuthorization();
-            app.MapControllers();
         }
     }
 }

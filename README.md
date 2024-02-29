@@ -20,6 +20,10 @@ AspNetCore Web Api to track magic games with friends.
     - Constants
     - Exceptions
 
+## Known issues
+* Controllers not hit when calling endpoint
+* validation pipeline not invoked (potentially because of the above issue)
+
 ## ToDo Checklist
 * FluentValidation
 * Validation in MediatR pipeline
