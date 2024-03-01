@@ -23,10 +23,8 @@ namespace TrackMagic.Application.Behaviors
 
             var context = new ValidationContext<TRequest>(request);
 
-            var errors = _validators
-                .Select(x => x.Validate(context))
-                .SelectMany(x => x.Errors)
-                .Where(x => x != null);
+            var validationTasks = _validators.Select(x => x.ValidateAsync(request, cancellationToken)).ToList();
+            var errors = (await Task.WhenAll(validationTasks)).SelectMany(x => x.Errors).ToList();
 
             if (errors.Any()) throw new ValidationException(errors);
 

@@ -32,6 +32,7 @@ namespace TrackMagic.Infrastructure.ExceptionHandling
                 Exception = ex.GetType().Name,
                 ErrorId = Guid.NewGuid().ToString(),
                 SupportMessage = DefaultMessages.SupportMessage,
+                Errors = new List<string>(),
             };
 
             errorResult.Errors!.Add(ex.Message);

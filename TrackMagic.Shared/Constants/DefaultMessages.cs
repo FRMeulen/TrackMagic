@@ -10,5 +10,6 @@
         public static string SupportMessage = "If this problem persists, please contact me on GitHub.";
 
         public static string NotFoundExceptionMessage(string entityType) => $"No matching {entityType} found with the provided parameters.";
+        public static string AlreadyExistsMessage(string entityType, string property, string value) => $"{entityType} with {property} {value} already exists.";
     }
 }
