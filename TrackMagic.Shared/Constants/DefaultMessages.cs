@@ -11,5 +11,6 @@
 
         public static string NotFoundExceptionMessage(string entityType) => $"No matching {entityType} found with the provided parameters.";
         public static string AlreadyExistsMessage(string entityType, string property, string value) => $"{entityType} with {property} {value} already exists.";
+        public static string MustExistMessage(string entityType, string property, string value) => $"{entityType} with {property} {value} does not exist.";
     }
 }

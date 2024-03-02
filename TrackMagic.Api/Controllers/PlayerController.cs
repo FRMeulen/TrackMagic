@@ -3,6 +3,7 @@ using NSwag.Annotations;
 using TrackMagic.Api.Controllers.Base;
 using TrackMagic.Application.Dtos;
 using TrackMagic.Application.Features.Players.Create;
+using TrackMagic.Application.Features.Players.Delete;
 using TrackMagic.Application.Features.Players.Get;
 using TrackMagic.Application.Features.Players.Update;
 using TrackMagic.Infrastructure.ExceptionHandling;
@@ -45,6 +46,16 @@ namespace TrackMagic.Api.Controllers
             var result = await Mediator.Send(command, cancellationToken);
 
             return result;
+        }
+
+        [HttpDelete]
+        [OpenApiOperation("Deletes a player.")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesDefaultResponseType(typeof(ErrorResult))]
+        public async Task DeleteAsync([FromQuery] int id, CancellationToken cancellationToken)
+        {
+            await Mediator.Send(new DeletePlayerCommand { Id = id }, cancellationToken);
         }
     }
 }
