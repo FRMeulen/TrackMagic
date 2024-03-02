@@ -21,12 +21,19 @@ AspNetCore Web Api to track magic games with friends.
     - Exceptions
 
 ## Known issues
-* Controllers not hit when calling endpoint
-* validation pipeline not invoked (potentially because of the above issue)
+* None at the moment :)
 
 ## ToDo Checklist
-* FluentValidation
-* Validation in MediatR pipeline
-* Result pattern
+* Player Entity
+    * Update
+    * Delete
+    * Search
+* Other entities
+    * Game
+    * Contestant
+    * Deck
+    * Decklist
+    * Card
+    * ColorIdentity
 * Unit tests
 * Integration tests

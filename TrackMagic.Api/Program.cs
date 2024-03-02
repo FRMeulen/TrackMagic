@@ -3,6 +3,7 @@ using TrackMagic.Api.Configurations;
 using TrackMagic.Api.Services;
 using TrackMagic.Application;
 using TrackMagic.Application.Common.Persistence;
+using TrackMagic.Application.Dtos;
 using TrackMagic.Infrastructure;
 using TrackMagic.Infrastructure.Persistence;
 using TrackMagic.Infrastructure.Persistence.Context;
@@ -33,7 +34,7 @@ namespace TrackMagic.Api
         private static void AddServices(WebApplicationBuilder builder)
         {
             builder.AddConfigurations();
-            builder.Services.AddAutoMapper(typeof(Program));
+            builder.Services.AddAutoMapper(typeof(Program), typeof(IDto));
             builder.Services.AddInfrastructure(builder.Configuration);
             builder.Services.AddApplication(builder.Configuration, typeof(AppDbContext).Assembly, typeof(IAppDbContext).Assembly);
             builder.Services.AddControllers().AddApplicationPart(Assembly.GetExecutingAssembly());
