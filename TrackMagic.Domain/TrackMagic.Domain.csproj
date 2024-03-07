@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TrackMagic.Shared\TrackMagic.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

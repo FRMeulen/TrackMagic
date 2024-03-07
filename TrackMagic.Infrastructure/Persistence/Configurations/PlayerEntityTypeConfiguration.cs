@@ -20,6 +20,11 @@ namespace TrackMagic.Infrastructure.Persistence.Configurations
             builder.Property(p => p.LastName)
                 .IsRequired()
                 .HasMaxLength(50);
+
+            builder.HasMany(p => p.Decks)
+                .WithOne(d => d.Owner)
+                .HasForeignKey(d => d.OwnerId)
+                .HasConstraintName("FK_Player_Deck_OwnerId");
         }
     }
 }
