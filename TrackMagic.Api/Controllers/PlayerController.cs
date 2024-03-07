@@ -1,13 +1,10 @@
-﻿using Azure;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
 using TrackMagic.Api.Controllers.Base;
-using TrackMagic.Application.Common.Searching;
 using TrackMagic.Application.Dtos;
 using TrackMagic.Application.Features.Players.Create;
 using TrackMagic.Application.Features.Players.Delete;
 using TrackMagic.Application.Features.Players.Get;
-using TrackMagic.Application.Features.Players.Search;
 using TrackMagic.Application.Features.Players.Update;
 using TrackMagic.Infrastructure.ExceptionHandling;
 
@@ -59,29 +56,6 @@ namespace TrackMagic.Api.Controllers
         public async Task DeleteAsync([FromQuery] int id, CancellationToken cancellationToken)
         {
             await Mediator.Send(new DeletePlayerCommand { Id = id }, cancellationToken);
-        }
-
-        [HttpGet("[action]")]
-        [OpenApiOperation("Searches for players using filters.")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesDefaultResponseType(typeof(ErrorResult))]
-        public async Task<SearchResult<PlayerDto>> SearchAsync(
-            [FromQuery] List<SearchFilter> filters,
-            [FromQuery] SearchOrdering ordering,
-            [FromQuery] int page,
-            [FromQuery] int pageSize,
-            CancellationToken cancellationToken)
-        {
-            var result = await Mediator.Send(new SearchPlayerQuery
-            {
-                Filters = filters,
-                Ordering = ordering,
-                Page = page,
-                PageSize = pageSize,
-            }, cancellationToken);
-
-            return result;
         }
     }
 }
