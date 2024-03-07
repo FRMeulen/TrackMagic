@@ -3,7 +3,7 @@ using TrackMagic.Api.Configurations;
 using TrackMagic.Api.Services;
 using TrackMagic.Application;
 using TrackMagic.Application.Common.Persistence;
-using TrackMagic.Application.Dtos;
+using TrackMagic.Application.Dtos.Base;
 using TrackMagic.Infrastructure;
 using TrackMagic.Infrastructure.Persistence;
 using TrackMagic.Infrastructure.Persistence.Context;
