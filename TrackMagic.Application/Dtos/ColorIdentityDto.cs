@@ -1,4 +1,6 @@
-﻿using TrackMagic.Application.Dtos.Base;
+﻿using AutoMapper;
+using TrackMagic.Application.Dtos.Base;
+using TrackMagic.Domain.Entities;
 using TrackMagic.Shared.Enums;
 
 namespace TrackMagic.Application.Dtos
@@ -9,5 +11,14 @@ namespace TrackMagic.Application.Dtos
         public string Name { get; set; } = default!;
         public List<Colors> Colors { get; set; } = default!;
         public List<ShallowDto<CardDto>> CardsInIdentity { get; set; } = default!;
+
+        public class ColorIdentityProfile : Profile
+        {
+            public ColorIdentityProfile()
+            {
+                CreateMap<ColorIdentity, ColorIdentityDto>();
+                CreateMap<ColorIdentity, ShallowDto<ColorIdentityDto>>();
+            }
+        }
     }
 }
