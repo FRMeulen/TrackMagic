@@ -1,0 +1,30 @@
+{
+  "Id": 1,
+  "Name": "Tivit, Seller of Secrets",
+  "CardTypes": [
+    2
+  ],
+  "ColorIdentity": {
+    "Id": 3,
+    "Name": "Esper"
+  },
+  "CommanderOf": [
+    {
+      "Id": 7,
+      "Name": "The Council"
+    },
+    {
+      "Id": 12,
+      "Name": "Time Siever"
+    }
+  ],
+  "CompanionOf": [],
+  "UsedIn": [
+    {
+      "Id": 17
+    },
+    {
+      "Id": 22
+    }
+  ]
+}
