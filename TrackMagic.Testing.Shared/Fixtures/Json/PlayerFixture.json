@@ -1,0 +1,25 @@
+{
+  "Id": 68,
+  "FirstName": "Harry",
+  "LastName": "Potter",
+  "Contested": [
+    {
+      "Id": 44,
+      "Name": "44"
+    },
+    {
+      "Id": 73,
+      "Name": "73"
+    }
+  ],
+  "Decks": [
+    {
+      "Id": 104,
+      "Name": "Kicker-Casting"
+    },
+    {
+      "Id": 80,
+      "Name": "Millchantress Anthem"
+    }
+  ]
+}

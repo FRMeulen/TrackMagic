@@ -1,0 +1,17 @@
+{
+  "Id": 8,
+  "Cards": [
+    {
+      "Id": 224,
+      "Name": "Yarus, Roar of the Old Gods"
+    },
+    {
+      "Id": 426,
+      "Name": "Yedora, Grave Gardener"
+    }
+  ],
+  "Deck": {
+    "Id": 82,
+    "Name": "Cloak Flip"
+  }
+}

@@ -18,7 +18,7 @@ namespace TrackMagic.Application.Dtos
             {
                 CreateMap<Contestant, ContestantDto>();
                 CreateMap<Contestant, ShallowDto<ContestantDto>>()
-                    .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Player.FullName + " - " + src.Deck.Name));
+                    .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Id));
             }
         }
     }
