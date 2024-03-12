@@ -18,9 +18,9 @@ namespace TrackMagic.Application.Features.Players.Create
 
             RuleFor(x => x)
                 .MustAsync(async (command, cancellationToken)
-                    => !await playersService.ExistsAsync(x =>
-                        x.FirstName == command.FirstName &&
-                        x.LastName == command.LastName,
+                    => !await playersService.ExistsAsync(p =>
+                        p.FirstName == command.FirstName &&
+                        p.LastName == command.LastName,
                         cancellationToken))
                 .WithMessage((_) => DefaultMessages.AlreadyExistsMessage(nameof(Player), nameof(Player.FullName), $"{_.FirstName} {_.LastName}"));
         }

@@ -22,9 +22,10 @@ namespace TrackMagic.Application.Features.Players.Delete
         public async Task Handle(DeletePlayerCommand command, CancellationToken cancellationToken)
         {
             var playerToDelete = await _appDbContext.Set<Player>()
-                .Where(x => x.Id == command.Id)
-                .FirstAsync();
+                .Where(p => p.Id == command.Id)
+                .FirstAsync(cancellationToken);
 
+            _logger.LogInformation($"Deleting player {playerToDelete.FullName}");
             _appDbContext.Set<Player>().Remove(playerToDelete);
             await _appDbContext.SaveChangesAsync(cancellationToken);
         }

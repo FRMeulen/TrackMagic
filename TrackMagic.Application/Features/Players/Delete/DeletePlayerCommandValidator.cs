@@ -8,11 +8,10 @@ namespace TrackMagic.Application.Features.Players.Delete
     {
         public DeletePlayerCommandValidator(IPlayersService playersService)
         {
-            RuleFor(x => x.Id)
+            RuleFor(p => p.Id)
                 .NotEmpty()
-                .GreaterThan(0)
                 .MustAsync(async (id, cancellationToken)
-                    => await playersService.ExistsAsync(x => x.Id == id))
+                    => await playersService.ExistsAsync(p => p.Id == id, cancellationToken))
                 .WithMessage((_) => DefaultMessages.MustExistMessage(nameof(Player), nameof(_.Id), $"{_.Id}"));
         }
     }

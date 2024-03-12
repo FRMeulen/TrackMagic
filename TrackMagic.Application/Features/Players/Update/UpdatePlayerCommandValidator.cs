@@ -10,7 +10,6 @@ namespace TrackMagic.Application.Features.Players.Update
         {
             RuleFor(x => x.Id)
                 .NotEmpty()
-                .GreaterThan(0)
                 .MustAsync(async (id, cancellationToken)
                     => await playersService.ExistsAsync(x => x.Id == id, cancellationToken))
                 .WithMessage((_) => $"No Player exists with the provided id.");

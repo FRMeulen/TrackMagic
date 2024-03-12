@@ -20,12 +20,12 @@ namespace TrackMagic.Application.Features.Players.Create
         public CreatePlayerCommandHandler(ILogger<CreatePlayerCommandHandler> logger, IAppDbContext dbContext)
             => (_logger, _appDbContext) = (logger, dbContext);
 
-        public async Task<int> Handle(CreatePlayerCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreatePlayerCommand command, CancellationToken cancellationToken)
         {
             var playerToCreate = new Player
             {
-                FirstName = request.FirstName,
-                LastName = request.LastName
+                FirstName = command.FirstName,
+                LastName = command.LastName
             };
 
             _logger.LogInformation($"Creating player {playerToCreate.FullName}.");
@@ -33,8 +33,8 @@ namespace TrackMagic.Application.Features.Players.Create
             await _appDbContext.SaveChangesAsync(cancellationToken);
 
             var createdPlayer = await _appDbContext.Set<Player>()
-                .Where(x => x.FirstName == request.FirstName && x.LastName == request.LastName)
-                .FirstAsync();
+                .Where(p => p.FirstName == command.FirstName && p.LastName == command.LastName)
+                .FirstAsync(cancellationToken);
 
             return createdPlayer.Id;
         }

@@ -28,13 +28,14 @@ namespace TrackMagic.Application.Features.Players.Update
         {
             var playerToUpdate = await _appDbContext.Set<Player>()
                 .Where(x => x.Id == command.Id)
-                .FirstAsync();
+                .FirstAsync(cancellationToken);
 
             playerToUpdate.FirstName = command.FirstName;
             playerToUpdate.LastName = command.LastName;
 
+            _logger.LogInformation($"Updating player {playerToUpdate.FullName}.");
             _appDbContext.Set<Player>().Update(playerToUpdate);
-            await _appDbContext.SaveChangesAsync();
+            await _appDbContext.SaveChangesAsync(cancellationToken);
 
             return _mapper.Map<PlayerDto>(playerToUpdate);
         }

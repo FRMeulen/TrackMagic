@@ -6,9 +6,8 @@ namespace TrackMagic.Application.Features.Players.Get
     {
         public GetPlayerQueryValidator()
         {
-            RuleFor(x => x.Id)
-                .NotEmpty()
-                .GreaterThan(0);
+            RuleFor(p => p.Id)
+                .NotEmpty();
         }
     }
 }
