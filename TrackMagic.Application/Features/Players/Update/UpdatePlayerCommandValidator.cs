@@ -8,26 +8,26 @@ namespace TrackMagic.Application.Features.Players.Update
     {
         public UpdatePlayerCommandValidator(IPlayersService playersService)
         {
-            RuleFor(x => x.Id)
+            RuleFor(p => p.Id)
                 .NotEmpty()
                 .MustAsync(async (id, cancellationToken)
-                    => await playersService.ExistsAsync(x => x.Id == id, cancellationToken))
-                .WithMessage((_) => $"No Player exists with the provided id.");
+                    => await playersService.ExistsAsync(p => p.Id == id, cancellationToken))
+                .WithMessage($"No Player exists with the provided id.");
 
-            RuleFor(x => x.FirstName)
+            RuleFor(p => p.FirstName)
                 .NotEmpty()
                 .MaximumLength(20);
 
-            RuleFor(x => x.LastName)
+            RuleFor(p => p.LastName)
                 .NotEmpty()
                 .MaximumLength(50);
 
-            RuleFor(x => x)
+            RuleFor(p => p)
                 .MustAsync(async (command, cancellationToken)
-                    => !await playersService.ExistsAsync(x =>
-                        x.FirstName == command.FirstName &&
-                        x.LastName == command.LastName &&
-                        x.Id != command.Id,
+                    => !await playersService.ExistsAsync(p =>
+                        p.FirstName == command.FirstName &&
+                        p.LastName == command.LastName &&
+                        p.Id != command.Id,
                         cancellationToken))
                 .WithMessage((_) => DefaultMessages.AlreadyExistsMessage(nameof(Player), nameof(Player.FullName), $"{_.FirstName} {_.LastName}"))
                 .WithName($"FullName");
