@@ -30,7 +30,7 @@ namespace TrackMagic.Application.Features.Players.Update
                         p.Id != command.Id,
                         cancellationToken))
                 .WithMessage((_) => DefaultMessages.AlreadyExistsMessage(nameof(Player), nameof(Player.FullName), $"{_.FirstName} {_.LastName}"))
-                .WithName($"FullName");
+                .WithName($"Duplicate");
         }
     }
 }
