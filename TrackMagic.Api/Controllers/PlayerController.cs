@@ -13,7 +13,7 @@ namespace TrackMagic.Api.Controllers
     public class PlayerController : BaseController
     {
         [HttpGet("[action]")]
-        [OpenApiOperation("Get a Player by id.")]
+        [OpenApiOperation("Get a Player by id.", "")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType(typeof(ErrorResult))]
@@ -25,7 +25,7 @@ namespace TrackMagic.Api.Controllers
         }
 
         [HttpPost("[action]")]
-        [OpenApiOperation("Create a new player.")]
+        [OpenApiOperation("Create a new player.", "")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType(typeof(ErrorResult))]
@@ -37,7 +37,7 @@ namespace TrackMagic.Api.Controllers
         }
 
         [HttpPut("[action]")]
-        [OpenApiOperation("Updates an existing player.")]
+        [OpenApiOperation("Updates an existing player.", "")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType(typeof(ErrorResult))]
@@ -49,7 +49,7 @@ namespace TrackMagic.Api.Controllers
         }
 
         [HttpDelete("[action]")]
-        [OpenApiOperation("Deletes a player.")]
+        [OpenApiOperation("Deletes a player.", "")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType(typeof(ErrorResult))]
