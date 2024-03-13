@@ -21,14 +21,15 @@ namespace TrackMagic.Application.Features.ColorIdentities.Update
             RuleFor(ci => ci.Colors)
                 .NotEmpty()
                 .MustAsync(async (colors, cancellationToken)
-                    => !await colorIdentitiesService.ExistsAsync(ci => ci.Colors.All(colors.Contains) && ci.Colors.Count == colors.Count))
+                    => !await colorIdentitiesService.ExistsAsync(ci => ci.Colors.All(colors.Contains) && ci.Colors.Count == colors.Count, cancellationToken))
                 .WithMessage((_) => DefaultMessages.AlreadyExistsMessage(nameof(ColorIdentity), nameof(ColorIdentity.Colors), $"{_.Colors}"));
 
             RuleFor(ci => ci)
                 .MustAsync(async (command, cancellationToken)
                     => !await colorIdentitiesService.ExistsAsync(ci =>
                         ci.Name == command.Name &&
-                        ci.Id != command.Id))
+                        ci.Id != command.Id,
+                        cancellationToken))
                 .WithMessage((_) => DefaultMessages.AlreadyExistsMessage(nameof(ColorIdentity), nameof(ColorIdentity.Name), $"{_.Name}"))
                 .WithName("Duplicate");
         }
