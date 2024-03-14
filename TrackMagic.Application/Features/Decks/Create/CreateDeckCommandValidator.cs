@@ -25,7 +25,7 @@ namespace TrackMagic.Application.Features.Decks.Create
                 .NotEmpty()
                 .MustAsync(async (id, cancellationToken)
                     => await playersService.ExistsAsync(p => p.Id == id, cancellationToken))
-                .WithMessage((_) => DefaultMessages.MustExistMessage(nameof(Player), nameof(Player.Id), $"{_.OwnerId}"));\
+                .WithMessage((_) => DefaultMessages.MustExistMessage(nameof(Player), nameof(Player.Id), $"{_.OwnerId}"));
 
             RuleFor(d => d.CommanderIds)
                 .NotEmpty()
