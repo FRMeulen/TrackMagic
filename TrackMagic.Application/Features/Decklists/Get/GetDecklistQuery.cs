@@ -27,6 +27,8 @@ namespace TrackMagic.Application.Features.Decklists.Get
         {
             _logger.LogInformation($"Fetching decklist {query.Id}.");
             var decklist = await _appDbContext.Set<Decklist>()
+                .Include(dl => dl.Cards)
+                .Include(dl => dl.Deck)
                 .Where(dl => dl.Id == query.Id)
                 .FirstAsync(cancellationToken);
 

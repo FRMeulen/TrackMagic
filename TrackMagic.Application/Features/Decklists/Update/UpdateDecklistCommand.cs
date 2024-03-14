@@ -27,19 +27,23 @@ namespace TrackMagic.Application.Features.Decklists.Update
         public async Task<DecklistDto> Handle(UpdateDecklistCommand command, CancellationToken cancellationToken)
         {
             var decklistToUpdate = await _appDbContext.Set<Decklist>()
+                .Include(dl => dl.Cards)
+                .Include(dl => dl.Deck)
                 .Where(dl => dl.Id == command.Id)
                 .FirstAsync(cancellationToken);
 
             var addedCards = await _appDbContext.Set<Card>()
+                .Include(c => c.UsedIn)
                 .Where(c => command.Additions.Contains(c.Id))
                 .ToListAsync(cancellationToken);
 
             var removedCards = await _appDbContext.Set<Card>()
+                .Include(c => c.UsedIn)
                 .Where(c => command.Removals.Contains(c.Id))
                 .ToListAsync(cancellationToken);
 
             decklistToUpdate.Cards.AddRange(addedCards);
-            removedCards.Select(c => decklistToUpdate.Cards.Remove(c));
+            removedCards.Select(decklistToUpdate.Cards.Remove);
 
             _logger.LogInformation($"Updating decklist {command.Id}.");
             _appDbContext.Set<Decklist>().Update(decklistToUpdate);

@@ -27,6 +27,7 @@ namespace TrackMagic.Application.Features.ColorIdentities.Get
         {
             _logger.LogInformation($"Fetching color identity {query.Id}.");
             var colorIdentity = await _appDbContext.Set<ColorIdentity>()
+                .Include(c => c.CardsInIdentity)
                 .Where(ci => ci.Id == query.Id)
                 .FirstOrDefaultAsync(cancellationToken);
 

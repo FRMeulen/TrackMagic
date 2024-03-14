@@ -27,6 +27,11 @@ namespace TrackMagic.Application.Features.Decks.Get
         {
             _logger.LogInformation($"Fetching deck {query.Id}.");
             var deck = await _appDbContext.Set<Deck>()
+                .Include(d => d.Owner)
+                .Include(d => d.Commanders)
+                .Include(d => d.Companion)
+                .Include(d => d.Decklist)
+                .Include(d => d.PilotedBy)
                 .Where(d => d.Id == query.Id)
                 .FirstOrDefaultAsync(cancellationToken);
 

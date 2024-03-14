@@ -28,6 +28,10 @@ namespace TrackMagic.Application.Features.Cards.Get
         {
             _logger.LogInformation($"Fetching card {query.Id}.");
             var card = await _appDbContext.Set<Card>()
+                .Include(c => c.ColorIdentity)
+                .Include(c => c.CommanderOf)
+                .Include(c => c.CompanionOf)
+                .Include(c => c.UsedIn)
                 .Where(c => c.Id == query.Id)
                 .FirstOrDefaultAsync(cancellationToken);
 

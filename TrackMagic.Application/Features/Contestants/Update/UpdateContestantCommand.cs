@@ -29,6 +29,9 @@ namespace TrackMagic.Application.Features.Contestants.Update
         public async Task<ContestantDto> Handle(UpdateContestantCommand command, CancellationToken cancellationToken)
         {
             var contestantToUpdate = await _appDbContext.Set<Contestant>()
+                .Include(c => c.Game)
+                .Include(c => c.Player)
+                .Include(c => c.Deck)
                 .Where(c => c.Id == command.Id)
                 .FirstAsync(cancellationToken);
 

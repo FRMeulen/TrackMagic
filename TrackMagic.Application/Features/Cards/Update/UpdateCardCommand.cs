@@ -29,6 +29,10 @@ namespace TrackMagic.Application.Features.Cards.Update
         public async Task<CardDto> Handle(UpdateCardCommand command, CancellationToken cancellationToken)
         {
             var cardToUpdate = await _appDbContext.Set<Card>()
+                .Include(c => c.ColorIdentity)
+                .Include(c => c.CommanderOf)
+                .Include(c => c.CompanionOf)
+                .Include(c => c.UsedIn)
                 .Where(c => c.Id == command.Id)
                 .FirstAsync(cancellationToken);
 

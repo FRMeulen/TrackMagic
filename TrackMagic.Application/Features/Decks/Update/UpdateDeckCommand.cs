@@ -30,10 +30,16 @@ namespace TrackMagic.Application.Features.Decks.Update
         public async Task<DeckDto> Handle(UpdateDeckCommand command, CancellationToken cancellationToken)
         {
             var commanders = await _appDbContext.Set<Card>()
+                .Include(c => c.CommanderOf)
                 .Where(c => command.CommanderIds.Contains(c.Id))
                 .ToListAsync(cancellationToken);
 
             var deckToUpdate = await _appDbContext.Set<Deck>()
+                .Include(d => d.Owner)
+                .Include(d => d.Commanders)
+                .Include(d => d.Companion)
+                .Include(d => d.Decklist)
+                .Include(d => d.PilotedBy)
                 .Where(d => d.Id == command.Id)
                 .FirstAsync(cancellationToken);
 

@@ -27,6 +27,9 @@ namespace TrackMagic.Application.Features.Contestants.Get
         {
             _logger.LogInformation($"Fetching contestant {query.Id}.");
             var contestant = await _appDbContext.Set<Contestant>()
+                .Include(c => c.Game)
+                .Include(c => c.Player)
+                .Include(c => c.Deck)
                 .Where(c => c.Id == query.Id)
                 .FirstOrDefaultAsync(cancellationToken);
 

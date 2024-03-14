@@ -28,6 +28,7 @@ namespace TrackMagic.Application.Features.ColorIdentities.Update
         public async Task<ColorIdentityDto> Handle(UpdateColorIdentityCommand command, CancellationToken cancellationToken)
         {
             var colorIdentityToUpdate = await _appDbContext.Set<ColorIdentity>()
+                .Include(c => c.CardsInIdentity)
                 .Where(ci => ci.Id == command.Id)
                 .FirstAsync(cancellationToken);
 
