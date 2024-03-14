@@ -14,9 +14,6 @@ namespace TrackMagic.Application.Features.ColorIdentities.Create
                 .MustAsync(async (name, cancellationToken)
                     => !await colorIdentitiesService.ExistsAsync(ci => ci.Name == name, cancellationToken))
                 .WithMessage((_) => DefaultMessages.AlreadyExistsMessage(nameof(ColorIdentity), nameof(ColorIdentity.Name), $"{_.Name}"));
-
-            RuleFor(ci => ci.Colors)
-                .NotEmpty();
         }
     }
 }
