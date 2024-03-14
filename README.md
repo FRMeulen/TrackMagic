@@ -8,32 +8,35 @@ AspNetCore Web Api to track magic games with friends.
     - Controllers
     - Configuration
 * Application
+    - Validation Behavior
     - Dtos
     - Features
 * Domain
     - Contracts
     - Entities
 * Infrastructure
+    - Exception Handling
+    - Logging
     - OpenApi
     - Persistence
 * Shared
     - Constants
+    - Enums
     - Exceptions
+
+## Test Projects
+* Application.UnitTests
+    - Mapping configuration tests
+* Testing.Shared
+    - Fixtures
 
 ## Known issues
 * None at the moment :)
 
 ## ToDo Checklist
-* Player Entity
-    * Update
-    * Delete
-    * Search
-* Other entities
-    * Game
-    * Contestant
-    * Deck
-    * Decklist
-    * Card
-    * ColorIdentity
+* Search endpoints (filtering, ordering, etc.)
 * Unit tests
+    - Validators
+    - Services
 * Integration tests
+    - Happy flow only
