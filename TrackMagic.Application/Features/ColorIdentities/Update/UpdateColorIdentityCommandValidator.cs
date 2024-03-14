@@ -18,11 +18,6 @@ namespace TrackMagic.Application.Features.ColorIdentities.Update
                 .NotEmpty()
                 .MaximumLength(50);
 
-            RuleFor(ci => ci.Colors)
-                .MustAsync(async (colors, cancellationToken)
-                    => !await colorIdentitiesService.ExistsAsync(ci => ci.Colors.All(colors.Contains) && ci.Colors.Count == colors.Count, cancellationToken))
-                .WithMessage((_) => DefaultMessages.AlreadyExistsMessage(nameof(ColorIdentity), nameof(ColorIdentity.Colors), $"{_.Colors}"));
-
             RuleFor(ci => ci)
                 .MustAsync(async (command, cancellationToken)
                     => !await colorIdentitiesService.ExistsAsync(ci =>
