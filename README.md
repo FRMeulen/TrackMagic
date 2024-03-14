@@ -31,7 +31,7 @@ AspNetCore Web Api to track magic games with friends.
     - Fixtures
 
 ## Known issues
-* None at the moment :)
+* Fixture Json files are accessed through inelegant means, I wish to figure out a better way.
 
 ## ToDo Checklist
 * Search endpoints (filtering, ordering, etc.)
