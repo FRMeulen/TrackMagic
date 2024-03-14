@@ -17,14 +17,12 @@ namespace TrackMagic.Application.Features.Decklists.Update
 
             RuleFor(dl => dl.Additions)
                 .NotEmpty()
-                .MustAsync(async (ids, cancellationToken)
-                    => await cardsService.AllExistAsync(ids, cancellationToken))
+                .MustAsync(cardsService.AllExistAsync)
                 .WithMessage((_) => DefaultMessages.MustExistMessage(nameof(Card), nameof(Card.Id), $"from list"));
 
             RuleFor(dl => dl.Removals)
                 .NotEmpty()
-                .MustAsync(async (ids, cancellationToken)
-                    => await cardsService.AllExistAsync(ids, cancellationToken))
+                .MustAsync(cardsService.AllExistAsync)
                 .WithMessage((_) => DefaultMessages.MustExistMessage(nameof(Card), nameof(Card.Id), $"from list"));
 
             RuleFor(dl => dl)
