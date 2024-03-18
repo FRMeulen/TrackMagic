@@ -15,8 +15,8 @@ namespace TrackMagic.Domain.Entities
         public int? CompanionId { get; set; }
         public Card? Companion { get; set; } = default!;
 
-        public int DecklistId { get; set; }
-        public Decklist Decklist { get; set; } = default!;
+        public int? DecklistId { get; set; }
+        public Decklist? Decklist { get; set; } = default!;
         public List<Contestant> PilotedBy { get; set; } = default!;
     }
 }
