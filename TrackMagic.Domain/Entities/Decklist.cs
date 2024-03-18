@@ -6,7 +6,7 @@ namespace TrackMagic.Domain.Entities
     {
         // Relational
         public List<Card> Cards { get; set; } = default!;
-        public int DeckId { get; set; }
-        public virtual Deck Deck { get; set; } = default!;
+        public int? DeckId { get; set; }
+        public virtual Deck? Deck { get; set; } = default!;
     }
 }
