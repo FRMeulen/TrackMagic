@@ -24,6 +24,18 @@ namespace TrackMagic.Api.Controllers
             return result;
         }
 
+        [HttpGet("[action]")]
+        [OpenApiOperation("Get a Card by name.", "")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType(typeof(ErrorResult))]
+        public async Task<CardDto> GetByNameAsync([FromQuery] string name, CancellationToken cancellationToken)
+        {
+            var result = await Mediator.Send(new GetCardByNameQuery { Name = name }, cancellationToken);
+
+            return result;
+        }
+
         [HttpPost("[action]")]
         [OpenApiOperation("Create a new Card.", "")]
         [ProducesResponseType(StatusCodes.Status200OK)]
