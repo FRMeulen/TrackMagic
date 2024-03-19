@@ -31,7 +31,7 @@ namespace TrackMagic.Application.Features.Cards.Get
                 .Include(c => c.ColorIdentity)
                 .Include(c => c.CommanderOf)
                 .Include(c => c.CompanionOf)
-                .Include(c => c.UsedIn)
+                .Include(c => c.Usage)
                 .Where(c => c.Id == query.Id)
                 .FirstOrDefaultAsync(cancellationToken);
 

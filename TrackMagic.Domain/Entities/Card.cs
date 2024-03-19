@@ -15,6 +15,6 @@ namespace TrackMagic.Domain.Entities
         public List<Deck>? CommanderOf { get; set; } = default!;
         public List<Deck>? CompanionOf { get; set; } = default!;
 
-        public List<Decklist>? UsedIn { get; set; } = default!;
+        public List<DecklistCard>? Usage { get; set; } = default!;
     }
 }

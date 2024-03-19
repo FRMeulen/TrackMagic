@@ -22,7 +22,7 @@ namespace TrackMagic.Application.UnitTests.Dtos
             Assert.Equal(card.CardTypes, dto.CardTypes);
             Assert.Equal((card.ColorIdentity.Id, card.ColorIdentity.Name), (dto.ColorIdentity.Id, dto.ColorIdentity.Name));
             Assert.Equal(card.CommanderOf.Count, dto.CommanderOf.Count);
-            Assert.Equal(card.UsedIn.Count, dto.UsedIn.Count);
+            Assert.Equal(card.Usage.Count, dto.Usage.Count);
         }
 
         [Fact]

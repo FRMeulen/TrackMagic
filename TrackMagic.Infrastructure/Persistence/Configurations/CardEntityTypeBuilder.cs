@@ -19,6 +19,11 @@ namespace TrackMagic.Infrastructure.Persistence.Configurations
             builder.Property(c => c.CardTypes)
                 .IsRequired();
 
+            builder.HasMany(c => c.Usage)
+                .WithOne(dlc => dlc.Card)
+                .HasForeignKey(dlc => dlc.CardId)
+                .HasConstraintName("FK_Card_DecklistCard_CardId");
+
             builder.HasOne(c => c.ColorIdentity)
                 .WithMany(ci => ci.CardsInIdentity)
                 .HasForeignKey(c => c.ColorIdentityId)

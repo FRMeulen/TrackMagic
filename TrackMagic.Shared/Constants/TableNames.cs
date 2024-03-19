@@ -9,5 +9,6 @@
         public static string Decklists = nameof(Decklists);
         public static string Cards = nameof(Cards);
         public static string ColorIdentities = nameof(ColorIdentities);
+        public static string DecklistCards = nameof(DecklistCards);
     }
 }

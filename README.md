@@ -32,6 +32,8 @@ AspNetCore Web Api to track magic games with friends.
 
 ## Known issues
 * Fixture Json files are accessed through inelegant means, I wish to figure out a better way.
+* Current card-to-decklist relation cannot handle multiples.
+* Mapping of directly related entities not always makes sense.
 
 ## ToDo Checklist
 * Search endpoints (filtering, ordering, etc.)

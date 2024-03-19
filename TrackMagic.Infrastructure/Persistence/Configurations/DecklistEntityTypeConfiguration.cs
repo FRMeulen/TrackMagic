@@ -14,8 +14,9 @@ namespace TrackMagic.Infrastructure.Persistence.Configurations
                 .IsIdentifiable();
 
             builder.HasMany(dl => dl.Cards)
-                .WithMany(c => c.UsedIn)
-                .UsingEntity("DecklistCardsJoinTable");
+                .WithOne(dlc => dlc.Decklist)
+                .HasForeignKey(dlc => dlc.DecklistId)
+                .HasConstraintName("FK_Decklist_DecklistCard_DecklistId");
         }
     }
 }

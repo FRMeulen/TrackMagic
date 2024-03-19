@@ -32,7 +32,7 @@ namespace TrackMagic.Application.Features.Cards.Update
                 .Include(c => c.ColorIdentity)
                 .Include(c => c.CommanderOf)
                 .Include(c => c.CompanionOf)
-                .Include(c => c.UsedIn)
+                .Include(c => c.Usage)
                 .Where(c => c.Id == command.Id)
                 .FirstAsync(cancellationToken);
 

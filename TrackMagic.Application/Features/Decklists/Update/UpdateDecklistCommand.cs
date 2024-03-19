@@ -11,8 +11,7 @@ namespace TrackMagic.Application.Features.Decklists.Update
     public class UpdateDecklistCommand : ICommand<DecklistDto>
     {
         public int Id { get; set; }
-        public List<int> Additions { get; set; } = default!;
-        public List<int> Removals { get; set; } = default!;
+        public List<int> CardIds { get; set; } = default!;
     }
 
     public class UpdateDecklistCommandHandler : ICommandHandler<UpdateDecklistCommand, DecklistDto>
@@ -26,26 +25,30 @@ namespace TrackMagic.Application.Features.Decklists.Update
 
         public async Task<DecklistDto> Handle(UpdateDecklistCommand command, CancellationToken cancellationToken)
         {
+            var idDictionary = command.CardIds
+                .GroupBy(id => id)
+                .ToDictionary(group => group.Key, group => group.Count());
+
+            var cards = await _appDbContext.Set<Card>()
+                .Where(c => command.CardIds.Contains(c.Id))
+                .ToListAsync(cancellationToken);
+
             var decklistToUpdate = await _appDbContext.Set<Decklist>()
-                .Include(dl => dl.Cards)
-                .Include(dl => dl.Deck)
                 .Where(dl => dl.Id == command.Id)
                 .FirstAsync(cancellationToken);
 
-            var addedCards = await _appDbContext.Set<Card>()
-                .Include(c => c.UsedIn)
-                .Where(c => command.Additions.Contains(c.Id))
-                .ToListAsync(cancellationToken);
+            var decklistCards = idDictionary
+                .Select(id => new DecklistCard
+                {
+                    Decklist = decklistToUpdate,
+                    Card = cards.First(c => c.Id == id.Key),
+                    Amount = id.Value
+                })
+                .ToList();
 
-            var removedCards = await _appDbContext.Set<Card>()
-                .Include(c => c.UsedIn)
-                .Where(c => command.Removals.Contains(c.Id))
-                .ToListAsync(cancellationToken);
+            decklistToUpdate.Cards = decklistCards;
 
-            decklistToUpdate.Cards.AddRange(addedCards);
-            removedCards.Select(decklistToUpdate.Cards.Remove);
-
-            _logger.LogInformation($"Updating decklist {command.Id}.");
+            _logger.LogInformation("Updating decklist.");
             _appDbContext.Set<Decklist>().Update(decklistToUpdate);
             await _appDbContext.SaveChangesAsync(cancellationToken);
 

@@ -13,7 +13,7 @@ namespace TrackMagic.Application.Dtos
         public ShallowDto<ColorIdentityDto> ColorIdentity { get; set; } = default!;
         public List<ShallowDto<DeckDto>>? CommanderOf { get; set; } = default!;
         public List<ShallowDto<DeckDto>>? CompanionOf { get; set; } = default!;
-        public List<ShallowDto<DecklistDto>> UsedIn { get; set; } = default!;
+        public List<ShallowDto<DecklistDto>> Usage { get; set; } = default!;
 
         public class CardProfile : Profile
         {
