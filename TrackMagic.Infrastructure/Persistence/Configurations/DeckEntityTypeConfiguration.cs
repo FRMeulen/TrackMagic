@@ -27,8 +27,8 @@ namespace TrackMagic.Infrastructure.Persistence.Configurations
 
             builder.HasOne(d => d.Decklist)
                 .WithOne(dl => dl.Deck)
-                .HasForeignKey<Decklist>(d => d.DeckId)
-                .HasConstraintName("FK_Deck_Decklist_DeckId");
+                .HasForeignKey<Deck>(d => d.DecklistId)
+                .HasConstraintName("FK_Deck_Decklist_DecklistId");
         }
     }
 }

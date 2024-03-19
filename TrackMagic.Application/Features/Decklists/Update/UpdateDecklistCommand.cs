@@ -35,6 +35,8 @@ namespace TrackMagic.Application.Features.Decklists.Update
 
             var decklistToUpdate = await _appDbContext.Set<Decklist>()
                 .Where(dl => dl.Id == command.Id)
+                .Include(dl => dl.Cards)
+                .Include(dl => dl.Deck)
                 .FirstAsync(cancellationToken);
 
             var decklistCards = idDictionary
