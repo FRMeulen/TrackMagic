@@ -15,19 +15,14 @@ namespace TrackMagic.Application.Features.Decklists.Update
                     => await decklistsService.ExistsAsync(dl => dl.Id == id, cancellationToken))
                 .WithMessage((_) => DefaultMessages.MustExistMessage(nameof(Decklist), nameof(Decklist.Id), $"{_.Id}"));
 
-            RuleFor(dl => dl.Additions)
-                .NotEmpty()
-                .MustAsync(cardsService.AllExistAsync)
-                .WithMessage((_) => DefaultMessages.MustExistMessage(nameof(Card), nameof(Card.Id), $"from list"));
-
-            RuleFor(dl => dl.Removals)
+            RuleFor(dl => dl.CardIds)
                 .NotEmpty()
                 .MustAsync(cardsService.AllExistAsync)
                 .WithMessage((_) => DefaultMessages.MustExistMessage(nameof(Card), nameof(Card.Id), $"from list"));
 
             RuleFor(dl => dl)
-                .Must(dl => dl.Additions.Count == dl.Removals.Count)
-                .WithMessage("Decklist cannot change in size.");
+                .Must(dl => dl.CardIds.Count == 100)
+                .WithMessage(DefaultMessages.FullDecklistMessage);
         }
     }
 }

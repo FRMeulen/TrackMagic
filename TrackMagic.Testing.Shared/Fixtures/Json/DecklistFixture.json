@@ -2,12 +2,20 @@
   "Id": 8,
   "Cards": [
     {
-      "Id": 224,
-      "Name": "Yarus, Roar of the Old Gods"
+      "Id": 1,
+      "Card": {
+        "Id": 224,
+        "Name": "Yarus, Roar of the Old Gods"
+      },
+      "Amount": 1
     },
     {
-      "Id": 426,
-      "Name": "Yedora, Grave Gardener"
+      "Id": 2,
+      "Card": {
+        "Id": 426,
+        "Name": "Yedora, Grave Gardener"
+      },
+      "Amount": 1
     }
   ],
   "Deck": {

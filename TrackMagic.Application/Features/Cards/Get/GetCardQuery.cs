@@ -32,6 +32,8 @@ namespace TrackMagic.Application.Features.Cards.Get
                 .Include(c => c.CommanderOf)
                 .Include(c => c.CompanionOf)
                 .Include(c => c.Usage)
+                    .ThenInclude(dl => dl.Decklist)
+                        .ThenInclude(dl => dl.Deck)
                 .Where(c => c.Id == query.Id)
                 .FirstOrDefaultAsync(cancellationToken);
 

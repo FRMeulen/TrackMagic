@@ -19,8 +19,21 @@ namespace TrackMagic.Application.Dtos
         {
             public CardProfile()
             {
-                CreateMap<Card, CardDto>();
+                CreateMap<Card, CardDto>()
+                    .ForMember(dest => dest.Usage, opt => opt.MapFrom<UsageValueResolver>());
                 CreateMap<Card, ShallowDto<CardDto>>();
+            }
+
+            public class UsageValueResolver : IValueResolver<Card, CardDto, List<ShallowDto<DecklistDto>>>
+            {
+                public List<ShallowDto<DecklistDto>> Resolve(Card source, CardDto destination, List<ShallowDto<DecklistDto>> member, ResolutionContext context)
+                {
+                    return source.Usage == null
+                        ? new List<ShallowDto<DecklistDto>>()
+                        : source.Usage
+                            .Select(dlc => dlc.Decklist)
+                            .Select(context.Mapper.Map<ShallowDto<DecklistDto>>).ToList();
+                }
             }
         }
     }

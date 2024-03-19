@@ -12,7 +12,7 @@ namespace TrackMagic.Application.Features.Decklists.Create
             RuleFor(dl => dl.CardIds)
                 .NotEmpty()
                 .Must(ids => ids.Count == 100)
-                .WithMessage("Full decklists need 100 cards.");
+                .WithMessage(DefaultMessages.FullDecklistMessage);
 
             RuleFor(dl => dl.CardIds)
                 .MustAsync(cardsService.AllExistAsync)
