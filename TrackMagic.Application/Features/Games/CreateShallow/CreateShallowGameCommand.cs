@@ -37,10 +37,6 @@ namespace TrackMagic.Application.Features.Games.CreateShallow
 
             _logger.LogInformation($"Created game on {command.Date} for {command.Contestants.Count} contestants.");
             _appDbContext.Set<Game>().Add(gameToCreate);
-
-            _appDbContext.ChangeTracker.DetectChanges();
-            var yeet = _appDbContext.ChangeTracker.DebugView.ShortView;
-
             await _appDbContext.SaveChangesAsync(cancellationToken);
 
             var createdGame = await _appDbContext.Set<Game>()
