@@ -7,6 +7,7 @@ using TrackMagic.Application.Features.Games.Create;
 using TrackMagic.Application.Features.Games.Delete;
 using TrackMagic.Application.Features.Games.Update;
 using TrackMagic.Infrastructure.ExceptionHandling;
+using TrackMagic.Application.Features.Games.CreateShallow;
 
 namespace TrackMagic.Api.Controllers
 {
@@ -30,6 +31,18 @@ namespace TrackMagic.Api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType(typeof(ErrorResult))]
         public async Task<int> CreateAsync([FromBody] CreateGameCommand command, CancellationToken cancellationToken)
+        {
+            var result = await Mediator.Send(command, cancellationToken);
+
+            return result;
+        }
+
+        [HttpPost("[action]")]
+        [OpenApiOperation("Create a new Game without decklists using only existing players and decks.", "")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesDefaultResponseType(typeof(ErrorResult))]
+        public async Task<int> CreateShallowAsync([FromBody] CreateShallowGameCommand command, CancellationToken cancellationToken)
         {
             var result = await Mediator.Send(command, cancellationToken);
 
