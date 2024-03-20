@@ -14,9 +14,15 @@ namespace TrackMagic.Application.Features.Decklists.Create
                 .Must(ids => ids.Count == 100)
                 .WithMessage(DefaultMessages.FullDecklistMessage);
 
-            RuleFor(dl => dl.CardIds)
-                .MustAsync(cardsService.AllExistAsync)
-                .WithMessage((_) => DefaultMessages.MustExistMessage(nameof(Card), nameof(Card.Id), $"from list"));
+            RuleForEach(dl => dl.CardIds)
+                .ChildRules(id =>
+                {
+                    id.RuleFor(id => id)
+                        .NotEmpty()
+                        .MustAsync(async (id, cancellationToken) =>
+                            await cardsService.ExistsAsync(c => c.Id == id, cancellationToken))
+                        .WithMessage((_) => DefaultMessages.MustExistMessage(nameof(Card), nameof(Card.Id), $"{id}"));
+                });
         }
     }
 }

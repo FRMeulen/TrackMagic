@@ -30,10 +30,15 @@ namespace TrackMagic.Application.Features.Decks.Update
                     => await playersService.ExistsAsync(p => p.Id == id, cancellationToken))
                 .WithMessage((_) => DefaultMessages.MustExistMessage(nameof(Player), nameof(Player.Id), $"{_.OwnerId}"));
 
-            RuleFor(d => d.CommanderIds)
-                .NotEmpty()
-                .MustAsync(cardsService.AllExistAsync)
-                .WithMessage((_) => DefaultMessages.MustExistMessage(nameof(Card), nameof(Card.Id), "from list"));
+            RuleForEach(d => d.CommanderIds)
+                .ChildRules(id =>
+                {
+                    id.RuleFor(id => id)
+                        .NotEmpty()
+                        .MustAsync(async (id, cancellationToken) =>
+                            await cardsService.ExistsAsync(c => c.Id == id, cancellationToken))
+                        .WithMessage((_) => DefaultMessages.MustExistMessage(nameof(Card), nameof(Card.Id), $"{id}"));
+                });
 
             RuleFor(d => d.CompanionId)
                 .MustAsync(async (id, cancellationToken)
