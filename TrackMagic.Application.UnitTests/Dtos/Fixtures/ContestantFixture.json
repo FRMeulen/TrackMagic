@@ -1,0 +1,16 @@
+{
+  "Id": 736,
+  "Points": 300,
+  "Game": {
+    "Id": 2,
+    "Name": "2"
+  },
+  "Player": {
+    "Id": 12,
+    "Name": "Ash Ketchum"
+  },
+  "Deck": {
+    "Id": 99,
+    "Name": "Saprecursion"
+  }
+}

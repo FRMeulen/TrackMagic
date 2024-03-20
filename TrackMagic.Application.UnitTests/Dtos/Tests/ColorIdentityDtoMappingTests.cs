@@ -1,9 +1,8 @@
 ﻿using TrackMagic.Application.Dtos;
 using TrackMagic.Application.Dtos.Base;
 using TrackMagic.Domain.Entities;
-using TrackMagic.Testing.Shared.Fixtures;
 
-namespace TrackMagic.Application.UnitTests.Dtos
+namespace TrackMagic.Application.UnitTests.Dtos.Tests
 {
     public class ColorIdentityDtoMappingTests : BaseDtoMappingTests
     {
@@ -11,7 +10,7 @@ namespace TrackMagic.Application.UnitTests.Dtos
         public void ColorIdentityToColorIdentityDto()
         {
             // Arrange.
-            var colorIdentity = new Fixture<ColorIdentity>().Create();
+            var colorIdentity = FixtureFactory.Create<ColorIdentity>();
 
             // Act.
             var dto = Mapper.Map<ColorIdentityDto>(colorIdentity);
@@ -27,7 +26,7 @@ namespace TrackMagic.Application.UnitTests.Dtos
         public void ColorIdentityToShallowDto()
         {
             // Arrange.
-            var colorIdentity = new Fixture<ColorIdentity>().Create();
+            var colorIdentity = FixtureFactory.Create<ColorIdentity>();
 
             // Act.
             var dto = Mapper.Map<ShallowDto<ColorIdentityDto>>(colorIdentity);

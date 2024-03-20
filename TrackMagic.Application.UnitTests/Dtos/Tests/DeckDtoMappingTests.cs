@@ -1,9 +1,8 @@
 ﻿using TrackMagic.Application.Dtos;
 using TrackMagic.Application.Dtos.Base;
 using TrackMagic.Domain.Entities;
-using TrackMagic.Testing.Shared.Fixtures;
 
-namespace TrackMagic.Application.UnitTests.Dtos
+namespace TrackMagic.Application.UnitTests.Dtos.Tests
 {
     public class DeckDtoMappingTests : BaseDtoMappingTests
     {
@@ -11,7 +10,7 @@ namespace TrackMagic.Application.UnitTests.Dtos
         public void DeckToDeckDto()
         {
             // Arrange.
-            var deck = new Fixture<Deck>().Create();
+            var deck = FixtureFactory.Create<Deck>();
 
             // Act.
             var dto = Mapper.Map<DeckDto>(deck);
@@ -29,7 +28,7 @@ namespace TrackMagic.Application.UnitTests.Dtos
         public void DeckToShallowDto()
         {
             // Arrange.
-            var deck = new Fixture<Deck>().Create();
+            var deck = FixtureFactory.Create<Deck>();
 
             // Act.
             var dto = Mapper.Map<ShallowDto<DeckDto>>(deck);

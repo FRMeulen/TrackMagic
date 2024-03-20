@@ -1,9 +1,8 @@
 ﻿using TrackMagic.Application.Dtos;
 using TrackMagic.Application.Dtos.Base;
 using TrackMagic.Domain.Entities;
-using TrackMagic.Testing.Shared.Fixtures;
 
-namespace TrackMagic.Application.UnitTests.Dtos
+namespace TrackMagic.Application.UnitTests.Dtos.Tests
 {
     public class GameDtoMappingTests : BaseDtoMappingTests
     {
@@ -11,7 +10,7 @@ namespace TrackMagic.Application.UnitTests.Dtos
         public void GameToGameDto()
         {
             // Arrange.
-            var game = new Fixture<Game>().Create();
+            var game = FixtureFactory.Create<Game>();
 
             // Act.
             var dto = Mapper.Map<GameDto>(game);
@@ -27,7 +26,7 @@ namespace TrackMagic.Application.UnitTests.Dtos
         public void GameToShallowDto()
         {
             // Arrange.
-            var game = new Fixture<Game>().Create();
+            var game = FixtureFactory.Create<Game>();
 
             // Act.
             var dto = Mapper.Map<ShallowDto<GameDto>>(game);

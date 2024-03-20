@@ -20,11 +20,34 @@
   <ItemGroup>
     <ProjectReference Include="..\TrackMagic.Domain\TrackMagic.Domain.csproj" />
 	<ProjectReference Include="..\TrackMagic.Application\TrackMagic.Application.csproj" />
-	<ProjectReference Include="..\TrackMagic.Testing.Shared\TrackMagic.Testing.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Dtos\Fixtures\CardFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Dtos\Fixtures\ColorIdentityFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Dtos\Fixtures\ContestantFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Dtos\Fixtures\DeckFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Dtos\Fixtures\DecklistFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Dtos\Fixtures\GameFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Dtos\Fixtures\PlayerFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
