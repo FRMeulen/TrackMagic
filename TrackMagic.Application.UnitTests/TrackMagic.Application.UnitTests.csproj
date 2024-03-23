@@ -48,6 +48,18 @@
     <None Update="Dtos\Fixtures\PlayerFixture.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Validators\Fixtures\Player\CreatePlayerCommandFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Player\DeletePlayerCommandFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Player\GetPlayerQueryFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Player\UpdatePlayerCommandFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
