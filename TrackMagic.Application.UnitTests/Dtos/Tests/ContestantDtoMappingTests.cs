@@ -4,7 +4,7 @@ using TrackMagic.Domain.Entities;
 
 namespace TrackMagic.Application.UnitTests.Dtos.Tests
 {
-    public class ContestantDtoMappingTests : BaseDtoMappingTests
+    public class ContestantDtoMappingTests : DtoMappingTestBase
     {
         [Fact]
         public void ContestantToContestantDto()

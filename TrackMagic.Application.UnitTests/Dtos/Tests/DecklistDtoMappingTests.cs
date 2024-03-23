@@ -4,7 +4,7 @@ using TrackMagic.Domain.Entities;
 
 namespace TrackMagic.Application.UnitTests.Dtos.Tests
 {
-    public class DecklistDtoMappingTests : BaseDtoMappingTests
+    public class DecklistDtoMappingTests : DtoMappingTestBase
     {
         [Fact]
         public void DecklistToDecklistDto()

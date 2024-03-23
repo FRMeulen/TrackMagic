@@ -4,7 +4,7 @@ using TrackMagic.Domain.Entities;
 
 namespace TrackMagic.Application.UnitTests.Dtos.Tests
 {
-    public class ColorIdentityDtoMappingTests : BaseDtoMappingTests
+    public class ColorIdentityDtoMappingTests : DtoMappingTestBase
     {
         [Fact]
         public void ColorIdentityToColorIdentityDto()
