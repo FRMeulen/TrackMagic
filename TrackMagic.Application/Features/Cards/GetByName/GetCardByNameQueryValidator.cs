@@ -2,7 +2,7 @@
 using TrackMagic.Domain.Entities;
 using TrackMagic.Shared.Constants;
 
-namespace TrackMagic.Application.Features.Cards.Get
+namespace TrackMagic.Application.Features.Cards.GetByName
 {
     public class GetCardByNameQueryValidator : AbstractValidator<GetCardByNameQuery>
     {

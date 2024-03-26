@@ -5,6 +5,7 @@ using TrackMagic.Application.Dtos;
 using TrackMagic.Application.Features.Cards.Create;
 using TrackMagic.Application.Features.Cards.Delete;
 using TrackMagic.Application.Features.Cards.Get;
+using TrackMagic.Application.Features.Cards.GetByName;
 using TrackMagic.Application.Features.Cards.Update;
 using TrackMagic.Infrastructure.ExceptionHandling;
 

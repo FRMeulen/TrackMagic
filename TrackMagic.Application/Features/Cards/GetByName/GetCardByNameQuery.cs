@@ -7,7 +7,7 @@ using TrackMagic.Application.Dtos;
 using TrackMagic.Domain.Entities;
 using TrackMagic.Shared.Exceptions;
 
-namespace TrackMagic.Application.Features.Cards.Get
+namespace TrackMagic.Application.Features.Cards.GetByName
 {
     public class GetCardByNameQuery : IQuery<CardDto>
     {
