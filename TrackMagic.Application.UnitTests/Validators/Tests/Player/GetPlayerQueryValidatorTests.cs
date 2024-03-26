@@ -1,6 +1,6 @@
 ﻿using TrackMagic.Application.Features.Players.Get;
 
-namespace TrackMagic.Application.UnitTests.Validators.Tests
+namespace TrackMagic.Application.UnitTests.Validators.Tests.Player
 {
     public class GetPlayerQueryValidatorTests : ValidatorTestBase
     {

@@ -1,7 +1,7 @@
 ﻿using TrackMagic.Application.Features.Players.Delete;
 using TrackMagic.Application.UnitTests.Validators.FakeServices;
 
-namespace TrackMagic.Application.UnitTests.Validators.Tests
+namespace TrackMagic.Application.UnitTests.Validators.Tests.Player
 {
     public class DeletePlayerCommandValidatorTests : ValidatorTestBase
     {
