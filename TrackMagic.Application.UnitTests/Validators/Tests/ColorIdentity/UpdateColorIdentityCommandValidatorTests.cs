@@ -16,8 +16,8 @@ namespace TrackMagic.Application.UnitTests.Validators.Tests.ColorIdentity
         public async Task IdValidation(int id, bool success)
         {
             // Arrange.
-            var command = FixtureFactory.Create<UpdateColorIdentityCommand>();
-            command.Id = id;
+            var command = FixtureFactory.Create<UpdateColorIdentityCommand>()
+                .With(ci => ci.Id, id);
 
             // Act.
             var result = await _validator.ValidateAsync(command);
@@ -32,8 +32,8 @@ namespace TrackMagic.Application.UnitTests.Validators.Tests.ColorIdentity
         public async Task NameValidation(string name, bool success)
         {
             // Arrange.
-            var command = FixtureFactory.Create<UpdateColorIdentityCommand>();
-            command.Name = name;
+            var command = FixtureFactory.Create<UpdateColorIdentityCommand>()
+                .With(ci => ci.Name, name);
 
             // Act.
             var result = await _validator.ValidateAsync(command);
@@ -48,9 +48,9 @@ namespace TrackMagic.Application.UnitTests.Validators.Tests.ColorIdentity
         public async Task DuplicateValidation(int id, string name, bool success)
         {
             // Arrange.
-            var command = FixtureFactory.Create<UpdateColorIdentityCommand>();
-            command.Id = id;
-            command.Name = name;
+            var command = FixtureFactory.Create<UpdateColorIdentityCommand>()
+                .With(ci => ci.Id, id)
+                .With(ci => ci.Name, name);
 
             // Act.
             var result = await _validator.ValidateAsync(command);

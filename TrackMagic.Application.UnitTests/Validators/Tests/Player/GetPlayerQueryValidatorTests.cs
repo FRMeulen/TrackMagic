@@ -15,8 +15,8 @@ namespace TrackMagic.Application.UnitTests.Validators.Tests.Player
         public async Task IdValidation(int id, bool success)
         {
             // Arrange.
-            var query = FixtureFactory.Create<GetPlayerQuery>();
-            query.Id = id;
+            var query = FixtureFactory.Create<GetPlayerQuery>()
+                .With(p => p.Id, id);
 
             // Act.
             var result = await _validator.ValidateAsync(query);

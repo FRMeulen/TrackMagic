@@ -16,8 +16,8 @@ namespace TrackMagic.Application.UnitTests.Validators.Tests.Player
         public async Task FirstNameValidation(string name, bool success)
         {
             // Arrange.
-            var command = FixtureFactory.Create<CreatePlayerCommand>();
-            command.FirstName = name;
+            var command = FixtureFactory.Create<CreatePlayerCommand>()
+                .With(p => p.FirstName, name);
 
             // Act.
             var result = await _validator.ValidateAsync(command);
@@ -32,8 +32,8 @@ namespace TrackMagic.Application.UnitTests.Validators.Tests.Player
         public async Task LastNameValidation(string name, bool success)
         {
             // Arrange.
-            var command = FixtureFactory.Create<CreatePlayerCommand>();
-            command.LastName = name;
+            var command = FixtureFactory.Create<CreatePlayerCommand>()
+                .With(p => p.LastName, name);
 
             // Act.
             var result = await _validator.ValidateAsync(command);
@@ -49,9 +49,9 @@ namespace TrackMagic.Application.UnitTests.Validators.Tests.Player
         public async Task DuplicateValidation(string firstName, string lastName, bool success)
         {
             // Arrange.
-            var command = FixtureFactory.Create<CreatePlayerCommand>();
-            command.FirstName = firstName;
-            command.LastName = lastName;
+            var command = FixtureFactory.Create<CreatePlayerCommand>()
+                .With(p => p.FirstName, firstName)
+                .With(p => p.LastName, lastName);
 
             // Act.
             var result = await _validator.ValidateAsync(command);

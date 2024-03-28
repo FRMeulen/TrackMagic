@@ -17,8 +17,8 @@ namespace TrackMagic.Application.UnitTests.Validators.Tests.ColorIdentity
         public async Task IdValidation(int id, bool success)
         {
             // Arrange.
-            var command = FixtureFactory.Create<DeleteColorIdentityCommand>();
-            command.Id = id;
+            var command = FixtureFactory.Create<DeleteColorIdentityCommand>()
+                .With(ci => ci.Id, id);
 
             // Act.
             var result = await _validator.ValidateAsync(command);

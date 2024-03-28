@@ -16,8 +16,8 @@ namespace TrackMagic.Application.UnitTests.Validators.Tests.ColorIdentity
         public async Task NameValidation(string name, bool success)
         {
             // Arrange.
-            var command = FixtureFactory.Create<CreateColorIdentityCommand>();
-            command.Name = name;
+            var command = FixtureFactory.Create<CreateColorIdentityCommand>()
+                .With(ci => ci.Name, name);
 
             // Act.
             var result = await _validator.ValidateAsync(command);

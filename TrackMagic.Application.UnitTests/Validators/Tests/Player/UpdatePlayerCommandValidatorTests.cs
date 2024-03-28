@@ -17,8 +17,8 @@ namespace TrackMagic.Application.UnitTests.Validators.Tests.Player
         public async Task IdValidation(int id, bool success)
         {
             // Arrange.
-            var command = FixtureFactory.Create<UpdatePlayerCommand>();
-            command.Id = id;
+            var command = FixtureFactory.Create<UpdatePlayerCommand>()
+                .With(p => p.Id, id);
 
             // Act.
             var result = await _validator.ValidateAsync(command);
@@ -34,8 +34,8 @@ namespace TrackMagic.Application.UnitTests.Validators.Tests.Player
         public async Task FirstNameValidation(string name, bool success)
         {
             // Arrange.
-            var command = FixtureFactory.Create<UpdatePlayerCommand>();
-            command.FirstName = name;
+            var command = FixtureFactory.Create<UpdatePlayerCommand>()
+                .With(p => p.FirstName, name);
 
             // Act.
             var result = await _validator.ValidateAsync(command);
@@ -51,8 +51,8 @@ namespace TrackMagic.Application.UnitTests.Validators.Tests.Player
         public async Task LastNameValidation(string name, bool success)
         {
             // Arrange.
-            var command = FixtureFactory.Create<UpdatePlayerCommand>();
-            command.LastName = name;
+            var command = FixtureFactory.Create<UpdatePlayerCommand>()
+                .With(p => p.LastName, name);
 
             // Act.
             var result = await _validator.ValidateAsync(command);
@@ -69,10 +69,10 @@ namespace TrackMagic.Application.UnitTests.Validators.Tests.Player
         public async Task DuplicateValidation(int id, string firstName, string lastName, bool success)
         {
             // Arrange.
-            var command = FixtureFactory.Create<UpdatePlayerCommand>();
-            command.Id = id;
-            command.FirstName = firstName;
-            command.LastName = lastName;
+            var command = FixtureFactory.Create<UpdatePlayerCommand>()
+                .With(p => p.Id, id)
+                .With(p => p.FirstName, firstName)
+                .With(p => p.LastName, lastName);
 
             // Act.
             var result = await _validator.ValidateAsync(command);
