@@ -26,7 +26,7 @@ namespace TrackMagic.Application.UnitTests.Validators.Tests.Card
             var result = await _validator.ValidateAsync(command);
 
             // Assert.
-            Assert.Equal(success, result.Errors.Count == 0);
+            Assert.Equal(success, result.IsValid);
         }
 
         [Theory]
@@ -43,7 +43,7 @@ namespace TrackMagic.Application.UnitTests.Validators.Tests.Card
             var result = await _validator.ValidateAsync(command);
 
             // Assert.
-            Assert.Equal(success, result.Errors.Count == 0);
+            Assert.Equal(success, result.IsValid);
         }
 
         [Theory]
@@ -59,7 +59,7 @@ namespace TrackMagic.Application.UnitTests.Validators.Tests.Card
             var result = await _validator.ValidateAsync(command);
 
             // Assert.
-            Assert.Equal(success, result.Errors.Count == 0);
+            Assert.Equal(success, result.IsValid);
         }
 
         private static List<CardTypes>[] cardTypeLists =
