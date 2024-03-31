@@ -1,0 +1,10 @@
+{
+  "Id": 1,
+  "Name": "Cursed Gifts",
+  "OwnerId": 1,
+  "CommanderIds": [
+    1
+  ],
+  "CompanionId": 1,
+  "DecklistId": 1
+}

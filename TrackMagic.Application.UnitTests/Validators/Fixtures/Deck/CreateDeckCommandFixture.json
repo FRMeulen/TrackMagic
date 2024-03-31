@@ -1,0 +1,9 @@
+{
+  "Name": "Discovery Channel",
+  "OwnerId": 1,
+  "CommanderIds": [
+    1
+  ],
+  "CompanionId": 2,
+  "DecklistId":  1
+}

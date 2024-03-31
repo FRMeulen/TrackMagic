@@ -12,7 +12,8 @@ namespace TrackMagic.Application.UnitTests.Validators.FakeServices
         /// </summary>
         private readonly IQueryable<Deck> _fakeDecks = new List<Deck>
         {
-            new Deck { Id = 1, Name = "Saprecursion" }
+            new Deck { Id = 1, Name = "Saprecursion" },
+            new Deck { Id = 2, Name = "Free Real Estate" }
         }.AsQueryable();
 
         public Task<bool> ExistsAsync(Expression<Func<Deck, bool>> expression, CancellationToken cancellationToken = default)
