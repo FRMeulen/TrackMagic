@@ -15,7 +15,7 @@ namespace TrackMagic.Application.UnitTests.Validators.FakeServices
             new Deck { Id = 1, Name = "Saprecursion" },
             new Deck { Id = 2, Name = "Free Real Estate" },
             new Deck { Id = 3, Name = "Token Mania" },
-            new Deck { Id = 4, Name = "Cursed Gifts" }
+            new Deck { Id = 4, Name = "Divine Convocation" }
         }.AsQueryable();
 
         public Task<bool> ExistsAsync(Expression<Func<Deck, bool>> expression, CancellationToken cancellationToken = default)

@@ -83,7 +83,7 @@ namespace TrackMagic.Application.UnitTests.Validators.Tests.Deck
         [Theory]
         [InlineData(1, true)]
         [InlineData(0, false)]
-        [InlineData(80, false)]
+        [InlineData(720, false)]
         [InlineData(null, true)]
         public async Task CompanionIdValidation(int? id, bool success)
         {

@@ -32,7 +32,7 @@ namespace TrackMagic.Application.UnitTests.Validators.Tests.Game
                 new List<ContestantForShallowGame>
                 {
                     new ContestantForShallowGame { Points = 300, FirstName = "Tony", LastName = "Stark", DeckName = "Saprecursion"  },
-                    new ContestantForShallowGame { Points = 200, FirstName = "Steve", LastName = "Rodgers", DeckName = "Cursed Gifts" },
+                    new ContestantForShallowGame { Points = 200, FirstName = "Steve", LastName = "Rodgers", DeckName = "Divine Convocation" },
                     new ContestantForShallowGame { Points = 100, FirstName = "Stephen", LastName = "Strange", DeckName = "Token Mania" },
                     new ContestantForShallowGame { Points = 0, FirstName = "Peter", LastName = "Parker", DeckName = "Free Real Estate" },
                 }, true
@@ -43,7 +43,7 @@ namespace TrackMagic.Application.UnitTests.Validators.Tests.Game
                 new List<ContestantForShallowGame>
                 {
                     new ContestantForShallowGame { Points = 300, FirstName = "Rocket", LastName = "Stark", DeckName = "Saprecursion"  },
-                    new ContestantForShallowGame { Points = 200, FirstName = "Clint", LastName = "Rodgers", DeckName = "Cursed Gifts" },
+                    new ContestantForShallowGame { Points = 200, FirstName = "Clint", LastName = "Rodgers", DeckName = "Divine Convocation" },
                     new ContestantForShallowGame { Points = 100, FirstName = "Natasha", LastName = "Strange", DeckName = "Token Mania" },
                     new ContestantForShallowGame { Points = 0, FirstName = "Bruce", LastName = "Parker", DeckName = "Free Real Estate" },
                 }, false
@@ -54,7 +54,7 @@ namespace TrackMagic.Application.UnitTests.Validators.Tests.Game
                 new List<ContestantForShallowGame>
                 {
                     new ContestantForShallowGame { Points = 300, FirstName = "Tony", LastName = "Krats", DeckName = "Saprecursion"  },
-                    new ContestantForShallowGame { Points = 200, FirstName = "Steve", LastName = "Sregdor", DeckName = "Cursed Gifts" },
+                    new ContestantForShallowGame { Points = 200, FirstName = "Steve", LastName = "Sregdor", DeckName = "Divine Convocation" },
                     new ContestantForShallowGame { Points = 100, FirstName = "Stephen", LastName = "Egnarts", DeckName = "Token Mania" },
                     new ContestantForShallowGame { Points = 0, FirstName = "Peter", LastName = "Rekrap", DeckName = "Free Real Estate" },
                 }, false
