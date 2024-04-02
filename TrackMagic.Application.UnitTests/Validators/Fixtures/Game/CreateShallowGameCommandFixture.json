@@ -1,0 +1,31 @@
+{
+  "Date": "2024-03-26T21:00:00.000Z",
+  "LengthInCycles": 7,
+  "GameType": 0,
+  "Contestants": [
+    {
+      "Points": 300,
+      "FirstName": "Natasha",
+      "LastName": "Romanoff",
+      "Deckname": "Blackwidow"
+    },
+    {
+      "Points": 200,
+      "FirstName": "Clint",
+      "LastName": "Barton",
+      "DeckName": "Hawkeye"
+    },
+    {
+      "Points": 100,
+      "FirstName": "Nick",
+      "LastName": "Fury",
+      "DeckName": "Eyepatched"
+    },
+    {
+      "Points": 0,
+      "FirstName": "Peter",
+      "LastName": "Quill",
+      "DeckName": "Starlord"
+    }
+  ]
+}

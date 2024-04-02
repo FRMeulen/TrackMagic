@@ -48,6 +48,84 @@
     <None Update="Dtos\Fixtures\PlayerFixture.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Validators\Fixtures\Card\CreateCardCommandFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Card\DeleteCardCommandFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Card\GetCardByNameQueryFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Card\GetCardQueryFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Card\UpdateCardCommandFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\ColorIdentity\CreateColorIdentityCommandFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\ColorIdentity\DeleteColorIdentityCommandFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\ColorIdentity\GetColorIdentityQueryFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\ColorIdentity\UpdateColorIdentityCommandFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Contestant\CreateContestantCommandFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Contestant\DeleteContestantCommandFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Contestant\GetContestantQueryFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Contestant\UpdateContestantCommandFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Decklist\CreateDecklistCommandFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Decklist\DeleteDecklistCommandFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Decklist\GetDecklistQueryFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Decklist\UpdateDecklistCommandFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Deck\CreateDeckCommandFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Deck\DeleteDeckCommandFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Deck\GetDeckQueryFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Deck\UpdateDeckCommandFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Game\CreateGameCommandFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Game\CreateShallowGameCommandFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Game\DeleteGameCommandFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Game\GetGameQueryFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Validators\Fixtures\Game\UpdateGameCommandFixture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Validators\Fixtures\Player\CreatePlayerCommandFixture.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

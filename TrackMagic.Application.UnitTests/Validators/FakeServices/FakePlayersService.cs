@@ -14,7 +14,8 @@ namespace TrackMagic.Application.UnitTests.Validators.FakeServices
         {
             new Player { Id = 1, FirstName = "Tony", LastName = "Stark" },
             new Player { Id = 2, FirstName = "Steve", LastName = "Rodgers" },
-            new Player { Id = 3, FirstName = "Stephen", LastName = "Strange" }
+            new Player { Id = 3, FirstName = "Stephen", LastName = "Strange" },
+            new Player { Id = 4, FirstName = "Peter", LastName = "Parker" }
         }.AsQueryable();
 
         public Task<bool> ExistsAsync(Expression<Func<Player, bool>> expression, CancellationToken cancellationToken = default)
