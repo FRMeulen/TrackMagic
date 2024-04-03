@@ -12,7 +12,7 @@ namespace TrackMagic.Application.Features.Decks.Create
         public int OwnerId { get; set; }
         public List<int> CommanderIds { get; set; } = default!;
         public int? CompanionId { get; set; }
-        public int DecklistId { get; set; }
+        public int? DecklistId { get; set; }
     }
 
     public class CreateDeckCommandHandler : ICommandHandler<CreateDeckCommand, int>

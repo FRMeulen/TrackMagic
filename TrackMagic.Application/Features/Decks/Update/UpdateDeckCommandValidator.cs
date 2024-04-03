@@ -49,9 +49,8 @@ namespace TrackMagic.Application.Features.Decks.Update
                 .WithMessage((_) => DefaultMessages.MustExistMessage(nameof(Card), nameof(Card.Id), $"{_.CompanionId}"));
 
             RuleFor(d => d.DecklistId)
-                .NotEmpty()
                 .MustAsync(async (id, cancellationToken)
-                    => await decklistsService.ExistsAsync(dl => dl.Id == id, cancellationToken))
+                    => id == null || await decklistsService.ExistsAsync(dl => dl.Id == id, cancellationToken))
                 .WithMessage((_) => DefaultMessages.MustExistMessage(nameof(Decklist), nameof(Decklist.Id), $"{_.DecklistId}"));
 
 

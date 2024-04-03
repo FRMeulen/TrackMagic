@@ -15,7 +15,7 @@ namespace TrackMagic.Application.Features.Decks.Update
         public int OwnerId { get; set; }
         public List<int> CommanderIds { get; set; } = default!;
         public int? CompanionId { get; set; } = null;
-        public int DecklistId { get; set; }
+        public int? DecklistId { get; set; }
     }
 
     public class UpdateDeckCommandHandler : ICommandHandler<UpdateDeckCommand, DeckDto>
