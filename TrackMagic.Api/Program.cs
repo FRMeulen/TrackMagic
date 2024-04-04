@@ -1,6 +1,5 @@
 using System.Reflection;
 using TrackMagic.Api.Configurations;
-using TrackMagic.Api.Services;
 using TrackMagic.Application;
 using TrackMagic.Application.Common.Persistence;
 using TrackMagic.Application.Dtos.Base;
@@ -38,7 +37,6 @@ namespace TrackMagic.Api
             builder.Services.AddInfrastructure(builder.Configuration);
             builder.Services.AddApplication(builder.Configuration, typeof(AppDbContext).Assembly, typeof(IAppDbContext).Assembly);
             builder.Services.AddControllers().AddApplicationPart(Assembly.GetExecutingAssembly());
-            builder.Services.AddHostedService<ApplicationPartsLogger>();
         }
 
         private static async void UseServices(WebApplication app, IConfiguration config)
