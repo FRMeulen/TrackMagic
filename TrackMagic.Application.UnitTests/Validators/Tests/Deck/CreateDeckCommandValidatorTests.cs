@@ -49,13 +49,12 @@ namespace TrackMagic.Application.UnitTests.Validators.Tests.Deck
         }
 
         [Theory]
-        [InlineData(0, true)]
-        [InlineData(1, false)]
-        public async Task CommanderIdsValidation(int listIndex, bool success)
+        [MemberData(nameof(CommanderLists))]
+        public async Task CommanderIdsValidation(List<int> commanderIds, bool success)
         {
             // Arrange.
             var command = FixtureFactory.Create<CreateDeckCommand>()
-                .With(d => d.CommanderIds, CommanderLists[listIndex]);
+                .With(d => d.CommanderIds, commanderIds);
 
             // Act.
             var result = await _validator.ValidateAsync(command);
@@ -99,10 +98,10 @@ namespace TrackMagic.Application.UnitTests.Validators.Tests.Deck
             Assert.Equal(success, result.IsValid);
         }
 
-        public List<int>[] CommanderLists =
-        [
-            new List<int> { 1, 2 },
-            new List<int> { }
-        ];
+        public static IEnumerable<object[]> CommanderLists()
+        {
+            yield return new object[] { new List<int> { 1, 2 }, true };
+            yield return new object[] { new List<int> { }, false };
+        }
     }
 }

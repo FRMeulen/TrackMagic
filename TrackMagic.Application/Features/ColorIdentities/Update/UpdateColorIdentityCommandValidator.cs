@@ -18,6 +18,12 @@ namespace TrackMagic.Application.Features.ColorIdentities.Update
                 .NotEmpty()
                 .MaximumLength(50);
 
+            RuleFor(ci => ci.Colors)
+                .Must(colors => colors.Count <= 5)
+                .WithMessage("There is no sixth color (yet).")
+                .Must(colors => colors.Count == colors.Distinct().Count())
+                .WithMessage("ColorIdentities cannot have duplicate colors.");
+
             RuleFor(ci => ci)
                 .MustAsync(async (command, cancellationToken)
                     => !await colorIdentitiesService.ExistsAsync(ci =>

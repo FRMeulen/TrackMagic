@@ -14,6 +14,20 @@ namespace TrackMagic.Application.Features.ColorIdentities.Create
                 .MustAsync(async (name, cancellationToken)
                     => !await colorIdentitiesService.ExistsAsync(ci => ci.Name == name, cancellationToken))
                 .WithMessage((_) => DefaultMessages.AlreadyExistsMessage(nameof(ColorIdentity), nameof(ColorIdentity.Name), $"{_.Name}"));
+
+            RuleFor(ci => ci.Colors)
+                .Must(colors => colors.Count <= 5)
+                .WithMessage("There is no sixth color (yet).")
+                .Must(colors => colors.Count == colors.Distinct().Count())
+                .WithMessage("ColorIdentities cannot have duplicate colors.");
+
+            RuleForEach(ci => ci.Colors)
+                .ChildRules(color =>
+                {
+                    color.RuleFor(c => c)
+                        .Must(c => Enum.IsDefined(c))
+                        .WithMessage((_) => $"Color must be defined.");
+                });
         }
     }
 }
