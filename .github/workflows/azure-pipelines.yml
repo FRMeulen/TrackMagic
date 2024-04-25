@@ -2,16 +2,18 @@ name: Deploy ASP.NET Core app to Azure Web App
 
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
   pull_request:
-    branches:
-      - "*"
+    branches: [ master ]
 
 env:
   AZURE_WEBAPP_NAME: TrackMagicBackend
   AZURE_WEBAPP_PACKAGE_PATH: "."
   DOTNET_VERSION: "8.0.x"
+
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
   build-and-deploy:
