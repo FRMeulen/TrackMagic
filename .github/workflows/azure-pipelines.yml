@@ -1,11 +1,12 @@
-name: Deploy to Azure Web App
+name: Deploy ASP.NET Core app to Azure Web App
 
 on:
   push:
     branches:
       - master
   pull_request:
-    - "*"
+    branches:
+      - "*"
 
 env:
   AZURE_WEBAPP_NAME: TrackMagicBackend
@@ -17,7 +18,7 @@ jobs:
     runs-on: windows-latest
     environment: dev
     steps:
-      # Checkout repo
+      # Checkout the repo
       - uses: actions/checkout@v3
 
       # Setup .NET Core SDK
@@ -27,15 +28,15 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
       # Run dotnet build and publish
-      - name: Dotnet build and publish
+      - name: DotNet Build and Publish
         run: |
           dotnet restore
           dotnet build --configuration Release
-          dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${{ env.AZURE_WEBAPP_NAME }}'
+          dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${{ AZURE_WEBAPP_NAME }}'
 
       # Deploy to Azure Web apps
-      - name: Deploy webapp
+      - name: "Deploy Azure WebApp"
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          package: "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${{ env.AZURE_WEBAPP_NAME }}"
+          package: "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/${{ AZURE_WEBAPP_NAME }}"
