@@ -8,6 +8,7 @@ using TrackMagic.Application.Features.Games.Delete;
 using TrackMagic.Application.Features.Games.Update;
 using TrackMagic.Infrastructure.ExceptionHandling;
 using TrackMagic.Application.Features.Games.CreateShallow;
+using TrackMagic.Application.Features.Games.GetDetailed;
 
 namespace TrackMagic.Api.Controllers
 {
@@ -21,6 +22,18 @@ namespace TrackMagic.Api.Controllers
         public async Task<GameDto> GetAsync([FromQuery] int id, CancellationToken cancellationToken)
         {
             var result = await Mediator.Send(new GetGameQuery { Id = id }, cancellationToken);
+
+            return result;
+        }
+
+        [HttpGet("[action]")]
+        [OpenApiOperation("Get a Game with all child data.", "")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType(typeof(ErrorResult))]
+        public async Task<DetailedGameDto> GetDetailedAsync([FromQuery] int id, CancellationToken cancellationToken)
+        {   
+            var result = await Mediator.Send(new GetDetailedGameQuery { Id = id }, cancellationToken);
 
             return result;
         }
