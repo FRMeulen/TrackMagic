@@ -14,13 +14,13 @@ namespace TrackMagic.Application.Features.Games.GetDetailed
         public int Id { get; set; }
     }
 
-    public class GetDetailedGameCommandHandler : ICommandHandler<GetDetailedGameQuery, DetailedGameDto>
+    public class GetDetailedGameQueryHandler : ICommandHandler<GetDetailedGameQuery, DetailedGameDto>
     {
         private readonly IAppDbContext _appDbContext;
         private readonly IMapper _mapper;
-        private readonly ILogger<GetDetailedGameCommandHandler> _logger;
+        private readonly ILogger<GetDetailedGameQueryHandler> _logger;
 
-        public GetDetailedGameCommandHandler(IAppDbContext dbContext, IMapper mapper, ILogger<GetDetailedGameCommandHandler> logger)
+        public GetDetailedGameQueryHandler(IAppDbContext dbContext, IMapper mapper, ILogger<GetDetailedGameQueryHandler> logger)
             => (_appDbContext, _mapper, _logger) = (dbContext, mapper, logger);
 
         public async Task<DetailedGameDto> Handle(GetDetailedGameQuery query, CancellationToken cancellationToken)
