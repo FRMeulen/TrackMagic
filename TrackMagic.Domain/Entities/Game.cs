@@ -10,6 +10,6 @@ namespace TrackMagic.Domain.Entities
         public GameTypes GameType { get; set; }
 
         // Relational
-        public List<Contestant> Contestants { get; set; } = default!;
+        public List<Contestant> Contestants { get; set; } = new List<Contestant>();
     }
 }

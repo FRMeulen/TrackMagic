@@ -10,13 +10,13 @@ namespace TrackMagic.Domain.Entities
         public int OwnerId { get; set; }
         public Player Owner { get; set; } = default!;
 
-        public List<Card> Commanders { get; set; } = default!;
+        public List<Card> Commanders { get; set; } = new List<Card>();
 
         public int? CompanionId { get; set; }
         public Card? Companion { get; set; } = default!;
 
         public int? DecklistId { get; set; }
         public Decklist? Decklist { get; set; } = default!;
-        public List<Contestant> PilotedBy { get; set; } = default!;
+        public List<Contestant> PilotedBy { get; set; } = new List<Contestant>();
     }
 }

@@ -9,7 +9,7 @@ namespace TrackMagic.Domain.Entities
         public string FullName => $"{FirstName} {LastName}";
 
         // Relational
-        public List<Contestant> Contested { get; set; } = default!;
+        public List<Contestant> Contested { get; set; } = new List<Contestant>();
         public List<Deck> Decks { get; set; } = default!;
     }
 }
