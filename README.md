@@ -34,5 +34,7 @@ AspNetCore Web Api to track magic games with friends.
 
 ## ToDo Checklist
 * Search endpoints (filtering, ordering, etc.)
+* Entra ID Authentication
+* CI/CD pipelines
 * Integration tests
     - Happy flow only
