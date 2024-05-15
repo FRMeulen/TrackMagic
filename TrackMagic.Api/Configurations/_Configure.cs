@@ -13,17 +13,15 @@
 
             foreach (var file in configFiles)
             {
-                AddConfig(builder, file);
+                builder.AddConfig(file);
             }
 
             return builder;
         }
 
-        private static void AddConfig(WebApplicationBuilder builder, string fileName)
-        {
-            builder.Configuration
-                .AddJsonFile($"{configDir}/{fileName}.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"{configDir}/{fileName}.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: true);
-        }
+        private static void AddConfig(this WebApplicationBuilder builder, string fileName)
+            => builder.Configuration
+                  .AddJsonFile($"{configDir}/{fileName}.json", optional: false, reloadOnChange: true)
+                  .AddJsonFile($"{configDir}/{fileName}.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: true);
     }
 }
